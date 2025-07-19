@@ -3,9 +3,10 @@
   title: Software Engineer
   url: https://www.hand-global.com
   jobdesk: 
-    - Analyze background warnings, identify potential issues, and report them promptly to ensure timely resolution.
-    - Monitor system performance, conduct initial data analysis, and work with the business team to make adjustments based on customer needs.
-    - Optimize system performance by collecting and analyzing key metrics, and collaborate with the technology team to enhance secondary systems.
+    - Improved production-level UNIQLO systems to ensure high performance and stability.
+    - Monitor system performance and service health using Grafana, Prometheus, and Graylog.
+    - Respond to incidents and ensure high availability and reliability of services.
+    - Collaborate with business teams to make adjustments based on customer needs.
 
 - company: Bangkit led by Google, Goto, and Traveloka
   date: Feb 2024 - Jul 2024

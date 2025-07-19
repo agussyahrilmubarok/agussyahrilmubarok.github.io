@@ -21,13 +21,12 @@
   title: Software Engineer (Backend)
   url: /
   jobdesk: 
-    - Developed and optimized backend systems using Golang and PHP frameworks (Laravel, CodeIgniter).
-    - Managed and optimized databases to improve query efficiency and system performance.
-    - Wrote clean, efficient, and testable code following software engineering best practices.
-    - Monitored application performance, debugged issues, and resolved backend system errors.
+    - Developed and maintained scalable backend systems using Go language.
+    - Designed and optimized databases (PostgreSQL, MySQL and Mongo).
+    - Built RESTful APIs and integrated them with frontend clients and third-party services.
+    - Conducted unit and integration testing to ensure code quality and reliability.
+    - Implemented microservice architecture with asynchronous communication using Kafka.
     - Implemented CI/CD pipelines and automated deployment using Docker, Kubernetes.
-    - Collaborated with cross-functional teams and conducted code reviews.
-
 
 # - company: Dinas Lingkungan Hidup Kabupaten Kuningan
 #   date: Oct - Dec 2023
@@ -37,18 +36,6 @@
 #     - Use Convolutional Neural Network, Xception architecture.
 #     - Collect and pre-processing Waste images.
 
-# - company: MZS Software House
-#   date: Dec 2021 - Oct 2023
-#   title: Software Engineer
-#   jobdesk: 
-#     - Creating, Integration, and Manage Databases (MySQL, MongoDB).
-#     - Writing code with Java, PHP.
-#     - Work with framework like Spring, Laravel.
-#     - Develop Web services like REST, GraphQL.
-#     - Integrate with Payment gateway.
-#     - Manage and develop Content Management System.
-#     - Implemented Test-Driven Development and utilized CI/CD tools.
-  
 # - company: CV Bing Elektronik
 #   date: Jan 2020 - Aug 2020
 #   title: IT Support

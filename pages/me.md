@@ -5,9 +5,10 @@ permalink: /
 image: /assets/about/profile.jpg
 ---
 
-<div>
+<!-- <div>
     <img src="{{ site.baseurl }}/assets/about/profile.jpg" onmouseover="this.src='{{ site.baseurl }}/assets/about/profiles.jpg'" onmouseout="this.src='{{ site.baseurl }}/assets/about/profile.jpg'" class="rounded" width="200" height="200">
 </div>
+-->
 
 <!-- Intro -->
 

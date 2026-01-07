@@ -20,7 +20,7 @@ permalink: /projects/
 
 <hr>
 
-<details open>
+<details>
 <summary>Mobile Application</summary>
 <div class="app-icons">
     <ul style="list-style:none;margin-left:0;margin-top:0;margin-bottom:1;">
@@ -36,7 +36,7 @@ permalink: /projects/
 
 <hr>
 
-<details open>
+<details>
 <summary>Web Application</summary>
 <div class="app-icons">
     <ul style="list-style:none;margin-left:0;margin-top:0;margin-bottom:1;">
@@ -100,7 +100,7 @@ permalink: /projects/
 
 <hr>
 
-<details open>
+<details>
 <summary>Others</summary>
 <div class="app-icons">
     <ul style="list-style:none;margin-left:0;margin-top:0;margin-bottom:1;">

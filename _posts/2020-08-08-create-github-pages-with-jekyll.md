@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Create Github Pages with Jekyll
-date: 2018-08-08
+date: 2020-08-08
 tags: jekyll
 ---
 

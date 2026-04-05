@@ -1,0 +1,10 @@
+- name: Guidelines
+  image_url: ""
+  url_path: "/projects/guidelines"
+  description: A living style reference for writing and formatting content across all project pages. Documents typography rules, heading scale, paragraph layout, image usage, table formatting, code blocks, lists, badges, links, and other markdown utilities — so every project page looks and reads consistently.
+  tags:
+    - Documentation
+    - Design
+    - Markdown
+    - Style Guide
+  muted: Released on April 2025

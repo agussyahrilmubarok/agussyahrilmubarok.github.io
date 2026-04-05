@@ -1,0 +1,172 @@
+// Experience
+.pf-exp-card {
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media-query($on-palm) {
+    padding: 0.875rem 1rem;
+  }
+}
+
+.pf-exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+
+  @include media-query($on-palm) {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.pf-exp-company {
+  font-family: $heading-font-family;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.pf-exp-title {
+  font-size: 0.82rem;
+  color: $primary-content-color;
+  font-weight: 500;
+  display: block;
+}
+
+.pf-exp-date {
+  font-size: 0.75rem;
+  color: var(--secondary-text-color);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  @include media-query($on-palm) {
+    white-space: normal;
+  }
+}
+
+.pf-exp-ul {
+  padding-left: 16px;
+  margin: 0;
+
+  li {
+    font-size: 0.82rem;
+    color: var(--secondary-text-color);
+    line-height: 1.65;
+    margin-bottom: 3px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Education
+.pf-edu-card {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.pf-edu-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $primary-content-color;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.pf-edu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 3px;
+
+  @include media-query($on-palm) {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+.pf-edu-school {
+  font-family: $heading-font-family;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.pf-edu-date {
+  font-size: 0.75rem;
+  color: var(--secondary-text-color);
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  @include media-query($on-palm) {
+    white-space: normal;
+  }
+}
+
+.pf-edu-major {
+  font-size: 0.82rem;
+  color: $primary-content-color;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.pf-edu-thesis {
+  font-size: 0.78rem;
+  color: var(--secondary-text-color);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+// Certifications
+.pf-cert-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: $primary-content-color;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--secondary-background-color);
+  text-decoration: none;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.pf-cert-icon {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  flex-shrink: 0;
+}

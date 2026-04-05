@@ -11,17 +11,17 @@ links:
   twitter: https://twitter.com/mrschwartx
   gdev: https://developers.google.com/profile/u/mrschwartx
   email: mailto:mrschwartx@gmail.com
+  jekyll: https://jekyllrb.com
   
   cekongkir: https://drive.google.com/file/d/16cKzbryjuKzbP28u8lABvvW1MFNXdGz0/view?usp=sharing
-  jekyll: https://jekyllrb.com
 
 collections:
   posts:
     output: true
-    permalink: /news/:title
+    permalink: /posts/:title
 
 paginate: 8
-paginate_path: /news/:num
+paginate_path: /posts/:num
 
 sass:
   style: compressed

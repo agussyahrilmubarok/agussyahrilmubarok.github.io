@@ -6,7 +6,7 @@ updates:
     interval: monthly
   open-pull-requests-limit: 10
   reviewers:
-  - mrschwartx
+  - agussyahrilmubarok
   allow:
   - dependency-type: direct
   - dependency-type: indirect
@@ -17,4 +17,4 @@ updates:
     interval: monthly
   open-pull-requests-limit: 10
   reviewers:
-  - mrschwartx
+  - agussyahrilmubarok

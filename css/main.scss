@@ -1,10 +1,12 @@
+// Important for Jekyll compile scss to css
 ---
 ---
 
 @charset "utf-8";
 
 // Font
-$base-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+$base-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+$heading-font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 $base-font-size: 16px;
 $base-font-weight: 400;
 $small-font-size: $base-font-size * 0.875;
@@ -48,4 +50,4 @@ $on-laptop: 860px;
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import "base", "layout", "syntax-highlighting";
+@import "base", "layout", "syntax-highlighting", "portfolio";

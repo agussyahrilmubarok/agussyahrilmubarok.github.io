@@ -5,81 +5,85 @@ permalink: /
 image: /assets/about/profile.jpg
 ---
 
-<!-- <div>
-    <img src="{{ site.baseurl }}/assets/about/profile.jpg" onmouseover="this.src='{{ site.baseurl }}/assets/about/profiles.jpg'" onmouseout="this.src='{{ site.baseurl }}/assets/about/profile.jpg'" class="rounded" width="200" height="200">
-</div>
--->
-
 <!-- Intro -->
+<h2>Hi, there 👋</h2>
+I'm Agus Syahril Mubarok, **Software Engineer** with a strong background in software development, system architecture, and cloud computing. Experienced in building and optimizing production-grade applications with a focus on efficiency, scalability, and performance.
 
-{: style="text-align: justify" }
-<h4>Hi, there 👋</h4>
+🌱 Currently contributing to [Kratos](https://go-kratos.dev/), a Go Microservice Framework.
 
-{: style="text-align: justify" }
-👨‍💻I'm Agus as <b>software engineer</b> based in Jakarta, Indonesia 🇮🇩. Software Engineer with a strong background in software development, system architecture, and cloud computing. Experienced in building and [optimizing production-grade applications](/), with a focus on improving efficiency, scalability, and performance. Proficient in backend development, distributed systems, and cloud infrastructure.
+🔋 Learning DevOps on [Fast Campus](https://fastcampus.com/id).
 
-{: style="text-align: justify" }
-🌱Build [Kratos (Go Microservice Framework)](https://go-kratos.dev/). 🔋 Learn DevOps Course on [Fast Campus](https://fastcampus.com/id). Read Book🏷️: <i>How to Create World-Class Agility, Reliability, and Security in Technology Organization</i> by Gene Kim, Patrick Debois, John Willis, Jez Humble. Systems Performance: Enterprise and the Cloud, 2nd Edition (2020) by Brendan Gregg.
+📚 Currently reading: *The DevOps Handbook* by Gene Kim et al. and *Systems Performance* by Brendan Gregg.
 
 You can reach me via <a href="{{ site.links.email }}">mrschwartx@gmail.com</a> and find me on:
-
 {% include external_links.html %}
 
 <hr>
 
-<h4>🔧Tech stack I'm familiar with</h4>
-<div style="text-align: justify;">
-  {% for slug in site.data.skills.devIcons %}
-    <img src="https://cdn.simpleicons.org/{{ slug }}" 
-         style="margin: 4px; height: 30px; width: 30px;"
-         onmouseover="this.src='https://cdn.simpleicons.org/{{ slug }}'"
-         onmouseout="this.src='https://cdn.simpleicons.org/{{ slug }}'" />
-  {% endfor %}
-</div>
+<!-- Skills -->
+![Tech Stack](https://skillicons.dev/icons?i=go,python,java,spring,cs,dotnet,cpp,kotlin,androidstudio,typescript,vue,react,express,php,laravel,dart,flutter,kafka,rabbitmq,postgres,mysql,mongo,firebase,linux,bash,docker,kubernetes,nginx,aws,gcp,azure,prometheus,grafana,openstack,tensorflow,matlab,pytorch,arduino,stackoverflow,devto,spotify)
 
 <hr>
 
-<h4>💼 Related Experiences</h4>
-{% assign experiences = site.data.experiences %}
-{% for exp in experiences %}
-<ul style="margin-top: 0; margin-bottom: 10px; text-align: justify; list-style:none;">
-  <li>
-    <b>{{ exp.company }}</b> | <i>{{ exp.date }}</i> <br />
-    <b>{{ exp.title }}</b>
+<!-- Experience -->
+<h4>💼 Work Experiences</h4>
+{% for exp in site.data.experiences %}
+<div class="pf-exp-card">
+  <div class="pf-exp-top">
+    <div>
+      <span class="pf-exp-company">
+        {% if exp.url and exp.url != "/" %}
+          <a href="{{ exp.url }}" target="_blank">{{ exp.company }}</a>
+        {% else %}
+        {{ exp.company }}
+        {% endif %}
+      </span>
+      <span class="pf-exp-title">{{ exp.title }}</span>
+    </div>
+    <span class="pf-exp-date">{{ exp.date }}</span>
+  </div>
+  <ul class="pf-exp-ul">
     {% for jobdesk in exp.jobdesk %}
-    <ul style="margin-top: 0; margin-bottom: 0; text-align: justify;">
-      <li>{{ jobdesk }}</li>
-    </ul>
+    <li>{{ jobdesk }}</li>
     {% endfor %}
-  </li>
-</ul>
+  </ul>
+</div>
 {% endfor %}
 
 <hr>
 
-<h4>🎓 Education History</h4>
-<ul style="list-style:none;">
-    <li style="margin-bottom: 10px;">
-        <b>Univeristas Islam Al-Ihya Kuningan</b> | 2020 - 2024<br> 
-        <i>Computer Science - Informatics</i>
-        <blockquote style="margin-top:0;margin-bottom:0;">
-            <p style="margin-top:0;margin-bottom:0;">Thesis: Development of Prototype Automatic Waste Classification System based on Robotics with Machine Learning.</p>
-        </blockquote>
-    </li>
-    <li style="margin-bottom: 10px;">
-        <b>SMK Pertiwi Kuningan</b> | 2014 - 2017<br> 
-        <i>Computer Network Engieneering</i> 
-        <blockquote style="margin-top:0;margin-bottom:0;">
-            <p style="margin-top:0;margin-bottom:0;">Final Project: IoT-based Smart School System: Design and Implementation.</p>
-        </blockquote>
-    </li>
-</ul>
+<!-- Education -->
+<h4>🎓 Education</h4>
+<div class="pf-edu-card">
+  <div class="pf-edu-dot"></div>
+  <div>
+    <div class="pf-edu-top">
+      <span class="pf-edu-school">Universitas Islam Al-Ihya Kuningan</span>
+      <span class="pf-edu-date">2020 - 2024</span>
+    </div>
+    <div class="pf-edu-major">Computer Science - Informatics</div>
+    <div class="pf-edu-thesis">"Development of Prototype Automatic Waste Classification System based on Robotics with Machine Learning."</div>
+  </div>
+</div>
+<div class="pf-edu-card">
+  <div class="pf-edu-dot"></div>
+  <div>
+    <div class="pf-edu-top">
+      <span class="pf-edu-school">SMK Pertiwi Kuningan</span>
+      <span class="pf-edu-date">2014 - 2017</span>
+    </div>
+    <div class="pf-edu-major">Computer Network Engineering</div>
+    <div class="pf-edu-thesis">"IoT-based Smart School System: Design and Implementation."</div>
+  </div>
+</div>
 
 <hr>
 
+<!-- Certifications -->
 <h4>🚀 Certifications</h4>
 {% for item in site.data.certifications %}
-<ul style="list-style:none; margin-top:0;margin-bottom:0;">
-    <li><a href="{{ item.url }}" style="list-style: none; margin-left: 0; margin-top:0;margin-bottom:0;" target="_blank">{% include icons/link.html %} {{ item.title }}</a></li>
-</ul>
+<a href="{{ item.url }}" target="_blank" class="pf-cert-item">
+  <span class="pf-cert-icon">↗</span>
+  <span>{{ item.title }}</span>
+</a>
 {% endfor %}

@@ -1,0 +1,63 @@
+// FOS Motor - Database Diagram
+// https://dbdiagram.io
+
+Table users {
+  id bigint [pk, increment]
+  name varchar(100) [not null]
+  email varchar(100) [unique, not null]
+  password varchar(255) [not null]
+  role enum('admin', 'kasir') [not null, default: 'kasir']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table motor_stocks {
+  id bigint [pk, increment]
+  brand varchar(100) [not null, note: 'e.g. Honda, Yamaha']
+  model varchar(100) [not null, note: 'e.g. Beat, NMAX']
+  year int [not null]
+  color varchar(50)
+  price decimal(15,2) [not null]
+  stock int [not null, default: 0]
+  status enum('available', 'sold', 'reserved') [default: 'available']
+  created_by bigint [ref: > users.id]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table transactions {
+  id bigint [pk, increment]
+  invoice_number varchar(50) [unique, not null, note: 'e.g. INV-20210101-001']
+  customer_name varchar(100) [not null]
+  customer_phone varchar(20)
+  customer_address text
+  total_amount decimal(15,2) [not null]
+  payment_method enum('cash', 'transfer', 'credit') [not null]
+  payment_status enum('paid', 'pending', 'cancelled') [default: 'pending']
+  notes text
+  created_by bigint [ref: > users.id]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table transaction_items {
+  id bigint [pk, increment]
+  transaction_id bigint [ref: > transactions.id]
+  motor_stock_id bigint [ref: > motor_stocks.id]
+  quantity int [not null, default: 1]
+  unit_price decimal(15,2) [not null]
+  subtotal decimal(15,2) [not null]
+  created_at timestamp
+}
+
+Table reports {
+  id bigint [pk, increment]
+  title varchar(150) [not null]
+  type enum('daily', 'monthly', 'yearly', 'custom') [not null]
+  start_date date [not null]
+  end_date date [not null]
+  total_transactions int
+  total_revenue decimal(15,2)
+  generated_by bigint [ref: > users.id]
+  created_at timestamp
+}

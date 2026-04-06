@@ -57,7 +57,7 @@ Designed with 5 core tables covering users, inventory, transactions, and reporti
 <details>
 <summary>Show DBML schema</summary>
 
-```dbml
+```bash
 Table users {
   id bigint [pk, increment]
   name varchar(100) [not null]

@@ -7,13 +7,14 @@ image: /assets/about/profile.jpg
 
 <!-- Intro -->
 <h2>Hi, there 👋</h2>
+
 I'm Agus Syahril Mubarok, **Software Engineer** with a strong background in software development, system architecture, and cloud computing. Experienced in building and optimizing production-grade applications with a focus on efficiency, scalability, and performance.
 
-🌱 Currently contributing to [Kratos](https://go-kratos.dev/), a Go Microservice Framework.
-
-🔋 Learning DevOps on [Fast Campus](https://fastcampus.com/id).
-
-📚 Currently reading: *The DevOps Handbook* by Gene Kim et al. and *Systems Performance* by Brendan Gregg.
+| | |
+|---|---|
+| 🌱 Contributing | <a href="https://go-kratos.dev/" target="_blank">Kratos</a> — a Go Microservice Framework |
+| 🔋 Learning     | DevOps at <a href="https://fastcampus.com/id" target="_blank">Fast Campus Indonesia</a> |
+| 📚 Reading      | *The DevOps Handbook* — Gene Kim et al.<br>*Systems Performance* — Brendan Gregg |
 
 You can reach me via <a href="{{ site.links.email }}">mrschwartx@gmail.com</a> and find me on:
 {% include external_links.html %}

@@ -8,7 +8,7 @@ image: /assets/about/profile.jpg
 <!-- Intro -->
 <h2>Hi, there 👋</h2>
 
-I'm Agus Syahril Mubarok, **Software Engineer** with a strong background in software development, system architecture, and cloud computing. Experienced in building and optimizing production-grade applications with a focus on efficiency, scalability, and performance.
+I'm Agus Syahril Mubarok, a **Software Engineer** based on Jakarta, Indonesia. I specialize in backend development and cloud infrastructure - primarily with Go, Java, and C# - with hands-on experience building production-grade systems. I enjoy exploring new technologies and continuously learning to stay sharp in an ever-evolving industry.
 
 🌱 Currently contributing to [Kratos](https://go-kratos.dev/), a Go Microservice Framework.
 

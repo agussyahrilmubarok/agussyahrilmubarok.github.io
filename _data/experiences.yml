@@ -11,26 +11,24 @@
   date: December 2021 - November 2023
   url: https://sevima.com/
   jobdesk:
-    - Developed and maintained scalable backend systems using Go language.
-    - Designed and optimized databases (PostgreSQL, MySQL and Mongo).
-    - Built RESTful APIs and integrated them with frontend clients and third-party services.
-    - Implemented microservice architecture with asynchronous communication using Kafka.
-    - Implemented CI/CD pipelines and automated deployment using Docker, Kubernetes.
+    - Engineered a coupon and discount system for a school payment platform, featuring unique single-use codes with configurable discount policies, designed to handle high-concurrency payment requests reliably.
+    - Implemented a rule-based cheating detection mechanism for a Computer Based Test platform, monitoring behavioral signals (tab switching and copy-paste attempts) with automated score penalty calculation, deployed across multiple schools.
+    - Established CI/CD pipelines across multiple projects using Docker and Kubernetes, streamlining automated testing and deployment workflows to accelerate release cycles.
 
 - company: PT Astra Honda Motor
   title: Process Engineer
   date: December 2017 - November 2019
   url: https://www.astra-honda.com/
   jobdesk:
-    - Develop and monitor die casting parameters to ensure product quality and process stability.
-    - Collaborate with maintenance, quality, and production teams to resolve operational issues.
-    - Document standard operating procedures and control plans for die casting processes.
+    - Developed, monitored, and optimized die casting parameters to ensure product quality and process stability across high-volume production lines.
+    - Conducted root cause analysis for production defects and equipment downtime, implementing corrective actions to reduce cycle time, scrap rate, and energy consumption.
+    - Collaborated cross-functionally with maintenance, quality, and production teams to resolve operational issues and support new product development initiatives.
+    - Ensured compliance with safety, environmental, and quality standards while documenting SOPs, work instructions, and control plans for die casting processes.
 
 - company: Axioo Class Program
   title: IT Support
   date: September 2016 - November 2016
   url: https://www.instagram.com/axiooclassprogram/
   jobdesk:
-    - Troubleshoot and resolve technical issues related to Windows, Microsoft Office, and email.
-    - Monitor and maintain IT assets, perform regular updates, patches, and backups.
-    - Support IT-related projects such as software rollouts, network upgrades, or security implementations.
+    - Provided technical support for hardware, software, and network issues, managing IT assets, updates, and backups across the organization.
+    - Assisted in IT project implementations including software rollouts, network upgrades, and security deployments.

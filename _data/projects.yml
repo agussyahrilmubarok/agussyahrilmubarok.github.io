@@ -79,7 +79,7 @@
 
 - name: Fullstack - Build FOS Motor CMS
   image_url: ""
-  url_path: "/projects/fosmotor"
+  url_path: "/projects/mzsfosmotor"
   description: Web-based CMS for managing a motorcycle dealership — covers stock management, sales transactions, and reporting with user authentication.
   tags:
     - Web

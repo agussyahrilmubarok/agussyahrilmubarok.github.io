@@ -1,7 +1,7 @@
 ---
 layout: page
 title: FOS Motor
-permalink: /projects/fosmotor
+permalink: /projects/mzsfosmotor
 ---
 
 # FOS Motor
@@ -17,7 +17,6 @@ permalink: /projects/fosmotor
 | **Type** | Web Application (CMS) |
 | **Stack** | PHP, Laravel, MySQL |
 | **Deployment** | Shared Hosting |
-| **Status** | Completed — January 2021 |
 
 ---
 

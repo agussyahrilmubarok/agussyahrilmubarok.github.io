@@ -58,7 +58,7 @@
 - name: Fullstack - Build MZS Point of Sales
   image_url: ""
   url_path: "/projects/mzspointofsales"
-  description: Point of Sales (POS) application for managing products, cashier transactions, inventory, and sales reports.
+  description: Multi-tenant SaaS POS platform built with Laravel — businesses subscribe and get their own isolated POS system via subdomain, with inventory management, multi-method payments, and sales reporting.
   tags:
     - Web
     - PHP
@@ -69,7 +69,7 @@
 - name: Fullstack - Build Amanah Laundry
   image_url: ""
   url_path: "/projects/mzsamanahlaundry"
-  description: Web-based laundry management system built with Laravel — featuring order tracking, multi-method payment via Midtrans Snap, and transaction reporting for day-to-day operations.
+  description: Web-based laundry management system — featuring order tracking, multi-method payment via Midtrans Snap, and transaction reporting for day-to-day operations.
   tags:
     - Web
     - PHP

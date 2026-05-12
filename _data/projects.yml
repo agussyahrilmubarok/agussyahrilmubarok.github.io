@@ -53,7 +53,7 @@
     - PHP
     - Laravel
     - MySQL
-  muted: Completed on Septembar 2022
+  muted: Completed on October 2022
 
 - name: Fullstack - Build MZS Point of Sales
   image_url: ""
@@ -64,18 +64,18 @@
     - PHP
     - Laravel
     - MySQL
-  muted: Completed on July 2022
+  muted: Completed on August 2022
 
 - name: Fullstack - Build Amanah Laundry
   image_url: ""
   url_path: "/projects/mzsamanahlaundry"
-  description: Web-based laundry management system for handling customer orders, laundry tracking, payment processing, and transaction reporting.
+  description: Web-based laundry management system built with Laravel — featuring order tracking, multi-method payment via Midtrans Snap, and transaction reporting for day-to-day operations.
   tags:
     - Web
     - PHP
     - Laravel
     - MySQL
-  muted: Completed on May 2022
+  muted: Completed on April 2022
 
 - name: Fullstack - Build FOS Motor CMS
   image_url: ""

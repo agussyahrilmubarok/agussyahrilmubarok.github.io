@@ -1,3 +1,82 @@
+- name: Fullstack - Build BackeHub
+  image_url: ""
+  url_path: "/projects/backehub"
+  description: Collaborative backend development platform focused on API management, authentication, and developer productivity tools.
+  tags:
+    - Web
+    - Golang
+    - REST API
+    - TypeScript
+    - Vue
+    - PostgreSQL
+  muted: Completed on November 2023
+
+- name: Fullstack - Build Snippetbox
+  image_url: ""
+  url_path: "/projects/snippetbox"
+  description: Web application for storing, managing, and sharing reusable code snippets with authentication and categorized collections.
+  tags:
+    - Web
+    - Golang
+    - PostgreSQL
+    - HTML
+  muted: Completed on October 2023
+
+- name: Backend - Add Coupon Feature on School Management
+  image_url: ""
+  url_path: "/projects/mzsschoolmanagement-coupon"
+  description: Added coupon and discount feature to the School Management System, including validation rules, usage limits, and payment integration.
+  tags:
+    - Backend
+    - Java
+    - Redis
+    - Kafka
+  muted: Completed on March 2023
+
+- name: Backend - Build School Management
+  image_url: ""
+  url_path: "/projects/mzsschoolmanagement"
+  description: Backend system for managing school operations including students, teachers, schedules, payments, and academic records.
+  tags:
+    - Backend
+    - Golang
+    - API
+    - PostgreSQL
+  muted: Completed on January 2023
+
+- name: Fullstack - Build TOEFL Course CBT
+  image_url: ""
+  url_path: "/projects/mzstoeflcbt"
+  description: Computer-Based Test (CBT) platform for TOEFL courses with question management, timer system, scoring, and student result tracking.
+  tags:
+    - Web
+    - PHP
+    - Laravel
+    - MySQL
+  muted: Completed on Septembar 2022
+
+- name: Fullstack - Build MZS Point of Sales
+  image_url: ""
+  url_path: "/projects/mzspointofsales"
+  description: Point of Sales (POS) application for managing products, cashier transactions, inventory, and sales reports.
+  tags:
+    - Web
+    - PHP
+    - Laravel
+    - MySQL
+  muted: Completed on July 2022
+
+- name: Fullstack - Build Amanah Laundry
+  image_url: ""
+  url_path: "/projects/mzsamanahlaundry"
+  description: Web-based laundry management system for handling customer orders, laundry tracking, payment processing, and transaction reporting.
+  tags:
+    - Web
+    - PHP
+    - Laravel
+    - MySQL
+  muted: Completed on May 2022
+
 - name: Fullstack - Build FOS Motor CMS
   image_url: ""
   url_path: "/projects/fosmotor"
@@ -7,15 +86,4 @@
     - PHP
     - Laravel
     - MySQL
-  muted: Completed on March 2022
-
-- name: Common - Guidelines
-  image_url: ""
-  url_path: "/projects/guidelines"
-  description: A living style reference for writing and formatting content across all project pages. Documents typography rules, heading scale, paragraph layout, image usage, table formatting, code blocks, lists, badges, links, and other markdown utilities — so every project page looks and reads consistently.
-  tags:
-    - Documentation
-    - Design
-    - Markdown
-    - Style Guide
-  muted: Updated April 2020
+  muted: Completed on February 2022

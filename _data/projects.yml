@@ -31,7 +31,7 @@
     - Java
     - Redis
     - Kafka
-  muted: Completed on March 2023
+  muted: Completed on September 2023
 
 - name: Backend - Build School Management
   image_url: ""
@@ -42,7 +42,7 @@
     - Golang
     - API
     - PostgreSQL
-  muted: Completed on January 2023
+  muted: Completed on June 2023
 
 - name: Fullstack - Build TOEFL Course CBT
   image_url: ""
@@ -64,7 +64,7 @@
     - PHP
     - Laravel
     - MySQL
-  muted: Completed on August 2022
+  muted: Completed on July 2022
 
 - name: Fullstack - Build Amanah Laundry
   image_url: ""
@@ -75,7 +75,7 @@
     - PHP
     - Laravel
     - MySQL
-  muted: Completed on April 2022
+  muted: Completed on February 2022
 
 - name: Fullstack - Build FOS Motor CMS
   image_url: ""
@@ -86,4 +86,4 @@
     - PHP
     - Laravel
     - MySQL
-  muted: Completed on February 2022
+  muted: Completed on January 2022

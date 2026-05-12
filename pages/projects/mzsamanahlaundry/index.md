@@ -81,9 +81,6 @@ Designed with 7 core tables covering users, customers, services, orders, order i
 <summary>Show DBML schema</summary>
 
 ```dbml
-// Amanah Laundry - Database Schema
-// Paste this into https://dbdiagram.io to render the ERD
-
 Table users {
   id bigint [pk, increment]
   name varchar(100) [not null]

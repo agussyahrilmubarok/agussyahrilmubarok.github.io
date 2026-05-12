@@ -48,7 +48,7 @@ This project was built as a **full-stack solution** from scratch — covering da
 
 Designed with 5 core tables covering users, inventory, transactions, and reporting. All relationships are defined with foreign keys to maintain data integrity.
 
-<img src="{{ site.baseurl }}/assets/projects/fosmotor/database-design.png" alt="" onerror="this.style.display='none'" />
+<img src="{{ site.baseurl }}/assets/projects/mzsfosmotor/database-design.png" alt="" onerror="this.style.display='none'" />
 
 
 > View full ERD on [dbdiagram.io](https://dbdiagram.io) — paste the DBML below to render it.
@@ -56,7 +56,7 @@ Designed with 5 core tables covering users, inventory, transactions, and reporti
 <details>
 <summary>Show DBML schema</summary>
 
-```bash
+```dbml
 Table users {
   id bigint [pk, increment]
   name varchar(100) [not null]

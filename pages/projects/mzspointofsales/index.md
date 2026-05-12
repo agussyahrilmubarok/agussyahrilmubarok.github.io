@@ -107,11 +107,6 @@ Designed with two layers — a **platform layer** managing tenants and subscript
 <summary>Show DBML schema</summary>
 
 ```dbml
-// MZS Point of Sales - Database Schema
-// Paste this into https://dbdiagram.io to render the ERD
-
-// ── PLATFORM LAYER ─────────────────────────────────────────
-
 Table tenants {
   id bigint [pk, increment]
   name varchar(100) [not null]

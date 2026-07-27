@@ -3,17 +3,18 @@
   date: September 2024 - Present
   url: https://www.hand-global.com/
   jobdesk:
-    - Monitored system performance (Logs, Metrics, and Traces) across multiple production services for UNIQLO global systems using Grafana, Prometheus, and Graylog, ensuring real-time visibility and early anomaly detection.
-    - Identified and escalated production anomalies in a global-scale environment, minimizing potential downtime impact across UNIQLO's international operations.
+    - Joined the Operations & Maintenance team to support multiple services, including Store Offline-to-Online (O2O), Store Inventory, and Order Management System (OMS).
 
 - company: MZS Software House
   title: Backend Engineer
   date: December 2021 - November 2023
   url: https://sevima.com/
   jobdesk:
-    - Engineered a coupon and discount system for a school payment platform, featuring unique single-use codes with configurable discount policies, designed to handle high-concurrency payment requests reliably.
-    - Implemented a rule-based cheating detection mechanism for a Computer Based Test platform, monitoring behavioral signals (tab switching and copy-paste attempts) with automated score penalty calculation, deployed across multiple schools.
-    - Established CI/CD pipelines across multiple projects using Docker and Kubernetes, streamlining automated testing and deployment workflows to accelerate release cycles.
+    - Developed, tested, and documented RESTful APIs using Java and Golang.
+    - Managed relational SQL databases for backend services.
+    - Automated CI/CD pipelines using Docker, Kubernetes, and AWS.
+    - Built event-driven microservices using Apache Kafka.
+    - Delivered features in Agile/Scrum sprints via code reviews and daily stand-ups.
 
 - company: PT Astra Honda Motor
   title: Process Engineer

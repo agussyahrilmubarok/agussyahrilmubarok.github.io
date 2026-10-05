@@ -1,0 +1,5 @@
+- projects: capstone-cocodiag
+- projects: demo-backerhub
+- projects: demo-observability
+- projects: research-burst-login
+- projects: research-search-recommendation

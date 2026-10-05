@@ -4,6 +4,9 @@ title: Projects
 permalink: /projects/
 ---
 
+{% assign total = site.data.projects | size %}
+<p class="text-end text-muted mb-3">{{ total }} project{% if total != 1 %}s{% endif %}</p>
+
 {% for project in site.data.projects %}
 <div>
     {% if project.image_url and project.image_url != "" %}

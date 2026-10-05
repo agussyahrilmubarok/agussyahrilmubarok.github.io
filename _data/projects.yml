@@ -1,16 +1,3 @@
-- name: Android - Build CocoDiag
-  image_url: "/assets/projects/capstone-cocodiag/logo.png"
-  url_path: "/projects/capstone-cocodiag"
-  description: AI-powered Android app that diagnoses coconut plant diseases from a single photo with 98.5% test accuracy, and provides treatment guidance, a farmer community forum, and market price updates.
-  tags:
-    - Kotlin
-    - Android
-    - TensorFlow
-    - Flask
-    - Firebase
-    - Google Cloud
-  muted: Completed on July 2024
-
 - name: Fullstack - Build BackerHub
   image_url: "https://placehold.co/200x200?text=BackerHub"
   url_path: ""

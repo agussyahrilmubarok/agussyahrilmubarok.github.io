@@ -7,37 +7,44 @@ permalink: /projects/
 {% assign all_tags = site.data.projects | map: "tags" | join: "," | split: "," | uniq | sort_natural %}
 
 <div class="pf-search">
-    <input type="search" id="project-search" class="pf-search-input" placeholder="Search projects by name, technology, or keyword" aria-label="Search projects" autocomplete="off">
+    <input type="search" id="project-search" class="pf-search-input" placeholder="Search by name, technology, or keyword" aria-label="Search projects" autocomplete="off">
     <div class="pf-filters" role="group" aria-label="Filter by technology">
         <button type="button" class="pf-filter is-active" data-tag="">All</button>
         {% for tag in all_tags %}
         <button type="button" class="pf-filter" data-tag="{{ tag | downcase | escape }}">{{ tag }}</button>
         {% endfor %}
     </div>
-    <p class="pf-search-meta" id="project-count" aria-live="polite">Showing {{ site.data.projects | size }} of {{ site.data.projects | size }} projects</p>
+    <div class="pf-search-meta">
+        <span id="project-count" aria-live="polite">Showing {{ site.data.projects | size }} of {{ site.data.projects | size }} projects</span>
+        <button type="button" id="project-reset" class="pf-reset" hidden>Clear filters</button>
+    </div>
 </div>
 
-<p id="project-empty" class="pf-search-empty" hidden>No projects match your search. Try a different keyword or clear the filter.</p>
+<p id="project-empty" class="pf-search-empty" hidden>No projects match your search. Try a different keyword or clear the filters.</p>
 
 {% for project in site.data.projects %}
 {% capture haystack %}{{ project.name }} {{ project.description }} {{ project.tags | join: " " }} {{ project.muted }}{% endcapture %}
 <div class="pf-project" data-search="{{ haystack | strip_newlines | downcase | escape }}" data-tags="{{ project.tags | join: '|' | downcase | escape }}">
     {% if project.image_url and project.image_url != "" %}
-    <img src="{{ project.image_url | relative_url }}" alt="{{ project.name }}" class="rounded" width="100" height="100">
+    <img src="{{ project.image_url | relative_url }}" alt="{{ project.name }}" class="pf-project-img" width="88" height="88">
     {% endif %}
-    <h2>{{ project.name }}</h2>
-    <div>
-        {% for tag in project.tags %}
-        <button type="button" class="badge badge-pill pf-badge" data-tag="{{ tag | downcase | escape }}">{{ tag }}</button>
-        {% endfor %}
+    <div class="pf-project-body">
+        <h2 class="pf-project-title">{{ project.name }}</h2>
+        <div class="pf-tags">
+            {% for tag in project.tags %}
+            <button type="button" class="pf-badge" data-tag="{{ tag | downcase | escape }}">{{ tag }}</button>
+            {% endfor %}
+        </div>
+        <p class="pf-project-desc">{{ project.description }}</p>
+        <div class="pf-project-foot">
+            <span class="pf-project-meta">{{ project.muted }}</span>
+            {% if project.url_path and project.url_path != "" %}
+            <a href="{{ project.url_path | relative_url }}" class="pf-project-link">
+              Read More {% include icons/chevron-right.html %}
+            </a>
+            {% endif %}
+        </div>
     </div>
-    <p>{{ project.description }}</p>
-    {% if project.url_path and project.url_path != "" %}
-        <a href="{{ project.url_path | relative_url }}" class="pf-project-link">
-          Read More {% include icons/chevron-right.html %}
-        </a>
-    {% endif %}
-    <p class="text-muted"><i>{{ project.muted }}</i></p>
 </div>
 {% endfor %}
 
@@ -49,6 +56,7 @@ permalink: /projects/
   var badges = Array.prototype.slice.call(document.querySelectorAll(".pf-badge"));
   var count = document.getElementById("project-count");
   var empty = document.getElementById("project-empty");
+  var reset = document.getElementById("project-reset");
   var total = cards.length;
   var activeTag = "";
   function setTag(tag) {
@@ -71,6 +79,7 @@ permalink: /projects/
     });
     count.textContent = "Showing " + shown + " of " + total + " projects";
     empty.hidden = shown !== 0;
+    reset.hidden = !(terms.length || activeTag);
     var params = new URLSearchParams();
     if (input.value.trim()) { params.set("q", input.value.trim()); }
     if (activeTag) { params.set("tag", activeTag); }
@@ -90,6 +99,12 @@ permalink: /projects/
       apply();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+  });
+  reset.addEventListener("click", function () {
+    input.value = "";
+    setTag("");
+    apply();
+    input.focus();
   });
   var params = new URLSearchParams(location.search);
   input.value = params.get("q") || "";

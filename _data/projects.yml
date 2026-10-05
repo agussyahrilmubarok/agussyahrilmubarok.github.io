@@ -3,7 +3,6 @@
   url_path: ""
   description: Collaborative backend development platform focused on API management, authentication, and developer productivity tools.
   tags:
-    - Web
     - Golang
     - REST API
     - TypeScript
@@ -16,10 +15,8 @@
   url_path: ""
   description: Web application for storing, managing, and sharing reusable code snippets with authentication and categorized collections.
   tags:
-    - Web
     - Golang
     - PostgreSQL
-    - HTML
   muted: Completed on October 2023
 
 - name: Backend - Add Coupon Feature on School Management
@@ -49,7 +46,6 @@
   url_path: "/projects/mzstoeflcbt"
   description: Computer-Based Test (CBT) platform for TOEFL courses with question management, timer system, scoring, and student result tracking.
   tags:
-    - Web
     - PHP
     - Laravel
     - MySQL
@@ -60,7 +56,6 @@
   url_path: "/projects/mzspointofsales"
   description: Multi-tenant SaaS POS platform built with Laravel — businesses subscribe and get their own isolated POS system via subdomain, with inventory management, multi-method payments, and sales reporting.
   tags:
-    - Web
     - PHP
     - Laravel
     - MySQL
@@ -71,7 +66,6 @@
   url_path: "/projects/mzsamanahlaundry"
   description: Web-based laundry management system — featuring order tracking, multi-method payment via Midtrans Snap, and transaction reporting for day-to-day operations.
   tags:
-    - Web
     - PHP
     - Laravel
     - MySQL
@@ -82,7 +76,6 @@
   url_path: "/projects/mzsfosmotor"
   description: Web-based CMS for managing a motorcycle dealership — covers stock management, sales transactions, and reporting with user authentication.
   tags:
-    - Web
     - PHP
     - Laravel
     - MySQL

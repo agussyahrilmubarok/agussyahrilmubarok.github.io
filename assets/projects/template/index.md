@@ -76,11 +76,10 @@ Describe the business or technical problem in two to four sentences. Explain wha
 
 <img src="https://placehold.co/860x480?text=System+Architecture+Diagram" alt="System architecture diagram" class="img-fluid rounded" />
 
-```
-Client -> API Gateway -> Service A -> PostgreSQL
-                      -> Service B -> Redis (cache)
-                      -> Kafka -> Worker -> External API
-```
+<pre><code>Client -&gt; API Gateway -&gt; Service A -&gt; PostgreSQL
+                       -&gt; Service B -&gt; Redis (cache)
+                       -&gt; Kafka -&gt; Worker -&gt; External API
+</code></pre>
 
 | Component | Responsibility | Technology |
 |---|---|---|
@@ -132,19 +131,17 @@ The API follows REST conventions with versioned paths (`/api/v1`), consistent er
 <details>
 <summary>Show example request and response</summary>
 
-```json
-POST /api/v1/resources
+<pre><code>POST /api/v1/resources
 Content-Type: application/json
-Authorization: Bearer <access_token>
+Authorization: Bearer &lt;access_token&gt;
 
 {
   "name": "Sample Resource",
   "category": "general"
 }
-```
+</code></pre>
 
-```json
-HTTP/1.1 201 Created
+<pre><code>HTTP/1.1 201 Created
 
 {
   "data": {
@@ -154,7 +151,7 @@ HTTP/1.1 201 Created
     "created_at": "2025-01-15T08:30:00Z"
   }
 }
-```
+</code></pre>
 
 </details>
 
@@ -175,8 +172,7 @@ HTTP/1.1 201 Created
 <details>
 <summary>Show DBML schema</summary>
 
-```dbml
-Table users {
+<pre><code>Table users {
   id uuid [pk]
   email varchar(150) [unique, not null]
   password_hash varchar(255) [not null]
@@ -187,14 +183,14 @@ Table users {
 
 Table resources {
   id uuid [pk]
-  owner_id uuid [ref: > users.id]
+  owner_id uuid [ref: &gt; users.id]
   name varchar(100) [not null]
   category varchar(50)
   deleted_at timestamp [note: 'Soft delete']
   created_at timestamp
   updated_at timestamp
 }
-```
+</code></pre>
 
 </details>
 

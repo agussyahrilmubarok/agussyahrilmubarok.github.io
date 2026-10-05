@@ -170,3 +170,77 @@
   opacity: 0.7;
   flex-shrink: 0;
 }
+
+// Projects search and filter
+.pf-search {
+  margin-bottom: 1.5rem;
+}
+
+.pf-search-input {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+  background: var(--background-color);
+  color: var(--text-color);
+  font: inherit;
+
+  &:focus {
+    outline: 2px solid $primary-content-color;
+    outline-offset: 1px;
+  }
+}
+
+.pf-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.pf-filter {
+  border: 1px solid $border-color;
+  background: transparent;
+  color: var(--text-color);
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+
+  &.is-active {
+    background: $primary-content-color;
+    border-color: $primary-content-color;
+    color: #fff;
+  }
+}
+
+.pf-search-meta {
+  margin: 0.75rem 0 0;
+  font-size: 0.8rem;
+  color: var(--secondary-text-color);
+}
+
+.pf-search-empty {
+  padding: 1.5rem 0;
+  color: var(--secondary-text-color);
+}
+
+.pf-project {
+  padding: 1.25rem 0;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+// Divider between visible cards only
+.pf-project:not([hidden]) ~ .pf-project:not([hidden]) {
+  border-top: 1px solid $border-color;
+}
+
+.pf-badge {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75em;
+}

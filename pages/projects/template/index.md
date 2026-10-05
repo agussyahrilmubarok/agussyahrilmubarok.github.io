@@ -24,7 +24,7 @@ sitemap: false # remove this line when you copy the template for a real project
 | **Stack** | Go, PostgreSQL, Redis, Kafka, Docker, Kubernetes |
 | **Architecture** | Microservices, event-driven, clean architecture |
 | **Deployment** | AWS EKS, GitHub Actions, Terraform |
-| **Duration** | January 2025 - June 2025 (6 months) |
+| **Duration** | January 2022 - June 2022 (6 months) |
 | **Team** | 5 members (3 backend, 1 frontend, 1 DevOps) |
 | **Status** | In production |
 
@@ -148,7 +148,7 @@ Authorization: Bearer &lt;access_token&gt;
     "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
     "name": "Sample Resource",
     "category": "general",
-    "created_at": "2025-01-15T08:30:00Z"
+    "created_at": "2022-01-15T08:30:00Z"
   }
 }
 </code></pre>

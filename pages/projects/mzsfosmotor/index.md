@@ -6,7 +6,9 @@ permalink: /projects/mzsfosmotor
 
 # FOS Motor
 
-**FOS Motor** is a web-based Content Management System (CMS) built to help a motorcycle dealership manage their day-to-day business operations — from tracking inventory to recording sales and generating reports.
+**FOS Motor** is a web-based Content Management System (CMS) that helps a motorcycle dealership run its daily operations, from tracking inventory to recording sales and generating reports. Built with Laravel and MySQL, it replaced the dealership's manual record-keeping with a single, secure, and searchable system.
+
+<img src="https://placehold.co/860x400?text=FOS+Motor+Cover" alt="FOS Motor cover" class="img-fluid rounded" />
 
 ---
 
@@ -14,18 +16,65 @@ permalink: /projects/mzsfosmotor
 
 | | |
 |---|---|
+| **Role** | Full-Stack Developer |
 | **Type** | Web Application (CMS) |
-| **Stack** | PHP, Laravel, MySQL |
+| **Stack** | PHP, Laravel, MySQL, Blade |
+| **Architecture** | Monolithic MVC |
 | **Deployment** | Shared Hosting |
+| **Completed** | January 2022 |
+| **Status** | Delivered and used by the dealership |
 
 ---
 
-## Features
+## Problem & Goals
 
-- **Stock Management** — Add, update, and monitor motorcycle inventory in real time, including unit details and availability status.
-- **Sales Transactions** — Record and manage sales transactions, track buyer information, and maintain a complete transaction history.
-- **Reports** — Generate sales and stock reports to help the business owner monitor performance and make informed decisions.
-- **User Authentication** — Secure login system to ensure only authorized users can access and manage the system.
+### Problem
+The dealership tracked stock, sales, and reports manually. Records were scattered, hard to search, and slow to consolidate whenever the owner needed a summary of performance.
+
+### Goals
+- Centralize motorcycle inventory with real-time availability status.
+- Record every sale with buyer details and a unique invoice number.
+- Generate sales and stock reports on demand.
+- Restrict access so only authorized staff can manage data.
+
+---
+
+## My Contributions
+
+- Designed the relational database schema, including tables, relationships, and constraints.
+- Implemented the backend logic for stock, transactions, and reporting with Laravel.
+- Built the server-rendered user interface with Blade templates.
+- Implemented authentication and role-based access for administrators and cashiers.
+- Deployed the application to a live shared hosting environment.
+
+---
+
+## Key Features
+
+- **Stock Management** - Add, update, and monitor motorcycle inventory in real time, including unit details (brand, model, year, color, price) and availability status (available, reserved, sold).
+- **Sales Transactions** - Record sales with buyer information, payment method, and payment status, and keep a complete transaction history with unique invoice numbers.
+- **Reports** - Generate daily, monthly, yearly, or custom-range reports on sales and stock to support business decisions.
+- **User Authentication** - Secure login so only authorized users can access and manage the system.
+
+---
+
+## Architecture
+
+The application follows the standard Laravel MVC request flow, which keeps the codebase simple to maintain and fits the shared hosting environment.
+
+<pre><code>Browser -&gt; Laravel Routes -&gt; Middleware (auth, role) -&gt; Controller
+        -&gt; Eloquent Models -&gt; MySQL
+        -&gt; Blade View -&gt; HTML Response
+</code></pre>
+
+### Key Design Decisions
+
+| Decision | Rationale | Trade-off |
+|---|---|---|
+| Monolithic MVC with server-side rendering (Blade) | Simple to build, deploy, and maintain on shared hosting | Less interactive than a single-page application |
+| Separate `transactions` and `transaction_items` tables | Supports several units in one invoice and keeps the unit price at the time of sale | More joins when querying |
+| Store report summaries in a `reports` table | Quick access to previously generated reports | Summary data can become stale if transactions change |
+| Foreign keys on all relationships | Preserves data integrity across users, stock, and sales | Stricter rules when deleting related records |
 
 ---
 
@@ -34,30 +83,50 @@ permalink: /projects/mzsfosmotor
 | Technology | Purpose |
 |---|---|
 | PHP & Laravel | Backend framework, routing, business logic |
-| MySQL | Relational database for storing all business data |
+| MySQL | Relational database for all business data |
 | Blade Templating | Server-side rendered frontend views |
 | Shared Hosting | Deployment environment |
 
 ---
 
-## Highlights
+## Roles & Access
 
-This project was built as a **full-stack solution** from scratch — covering database design, backend logic, and frontend UI. It was deployed on a live hosting environment and used by the dealership to replace their manual record-keeping process.
+| Role | Access |
+|---|---|
+| **Admin** | Full access to stock, transactions, reports, and user management |
+| **Kasir** | Records sales transactions and views available stock |
 
-## Database Design
+---
+
+## Security
+
+- **Authentication** - Login required for every management page.
+- **Authorization** - Two roles (`admin` and `kasir`) control what each user can do.
+- **Credentials** - Passwords are stored as hashes, never as plain text.
+- **Data Integrity** - Foreign keys and unique constraints (for example on invoice numbers and emails) prevent inconsistent records.
+
+---
+
+## Data Model
 
 Designed with 5 core tables covering users, inventory, transactions, and reporting. All relationships are defined with foreign keys to maintain data integrity.
 
-<img src="{{ site.baseurl }}/assets/projects/mzsfosmotor/database-design.png" alt="" onerror="this.style.display='none'" />
+| Table | Description |
+|---|---|
+| `users` | Staff accounts, credentials, and roles |
+| `motor_stocks` | Motorcycle units with brand, model, year, price, stock, and status |
+| `transactions` | Sales header with invoice number, customer, payment method, and status |
+| `transaction_items` | Line items linking each transaction to the motorcycles sold |
+| `reports` | Generated report summaries by type and date range |
 
+<img src="{{ site.baseurl }}/assets/projects/mzsfosmotor/database-design.png" alt="FOS Motor database design ERD" class="img-fluid rounded" onerror="this.style.display='none'" />
 
-> View full ERD on [dbdiagram.io](https://dbdiagram.io) — paste the DBML below to render it.
+> View the full ERD on [dbdiagram.io](https://dbdiagram.io) by pasting the DBML below.
 
 <details>
 <summary>Show DBML schema</summary>
 
-```dbml
-Table users {
+<pre><code>Table users {
   id bigint [pk, increment]
   name varchar(100) [not null]
   email varchar(100) [unique, not null]
@@ -76,7 +145,7 @@ Table motor_stocks {
   price decimal(15,2) [not null]
   stock int [not null, default: 0]
   status enum('available', 'sold', 'reserved') [default: 'available']
-  created_by bigint [ref: > users.id]
+  created_by bigint [ref: &gt; users.id]
   created_at timestamp
   updated_at timestamp
 }
@@ -91,15 +160,15 @@ Table transactions {
   payment_method enum('cash', 'transfer', 'credit') [not null]
   payment_status enum('paid', 'pending', 'cancelled') [default: 'pending']
   notes text
-  created_by bigint [ref: > users.id]
+  created_by bigint [ref: &gt; users.id]
   created_at timestamp
   updated_at timestamp
 }
 
 Table transaction_items {
   id bigint [pk, increment]
-  transaction_id bigint [ref: > transactions.id]
-  motor_stock_id bigint [ref: > motor_stocks.id]
+  transaction_id bigint [ref: &gt; transactions.id]
+  motor_stock_id bigint [ref: &gt; motor_stocks.id]
   quantity int [not null, default: 1]
   unit_price decimal(15,2) [not null]
   subtotal decimal(15,2) [not null]
@@ -114,9 +183,16 @@ Table reports {
   end_date date [not null]
   total_transactions int
   total_revenue decimal(15,2)
-  generated_by bigint [ref: > users.id]
+  generated_by bigint [ref: &gt; users.id]
   created_at timestamp
 }
-```
+</code></pre>
 
 </details>
+
+---
+
+## Results & Impact
+
+- Delivered as a **full-stack solution built from scratch**, covering database design, backend logic, and frontend UI.
+- Deployed on a live hosting environment and used by the dealership to replace its manual record-keeping process.

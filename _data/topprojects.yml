@@ -1,3 +1,19 @@
+- name: BinIQ - Automated Waste Classification System
+  image_url: "/assets/projects/biniq/logo.png"
+  url_path: "/projects/biniq"
+  description: End-to-end IoT and machine learning system that classifies waste as organic or inorganic and sorts it automatically with a servo-driven mechanism, while a native Android application gives operators a clear history of every classification. Built with ESP32 firmware, a TensorFlow MobileNetV2 model, a Flask inference service, Firebase Firestore, and Jetpack Compose, it focuses on practical edge-to-cloud integration, clean separation of concerns, and measurable model accuracy.
+  tags:
+    - ML
+    - CNN
+    - TensorFlow
+    - IoT
+    - ESP32
+    - Python
+    - Android
+    - Kotlin
+    - Firebase
+  muted: Completed on July 2024
+
 - name: Android - Build CocoDiag
   image_url: "/assets/projects/capstone-cocodiag/logo.png"
   url_path: "/projects/capstone-cocodiag"
@@ -9,4 +25,4 @@
     - Flask
     - Firebase
     - Google Cloud
-  muted: Completed on July 2024
+  muted: Completed on June 2024

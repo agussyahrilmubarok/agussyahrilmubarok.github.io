@@ -6,7 +6,7 @@ permalink: /projects/
 
 {% assign top = site.data.topprojects %}
 {% if top.size > 0 %}
-{% assign total = site.data.projects | size %}
+{% assign total = site.data.topprojects | size %}
 <div class="d-flex justify-content-between align-items-baseline mb-3">
     <h4 class="mb-0">⭐ Top Projects</h4>
     <span class="text-muted">{{ total }} project{% if total != 1 %}s{% endif %}</span>

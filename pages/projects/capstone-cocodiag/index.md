@@ -1,7 +1,7 @@
 ---
 layout: page
 title: CocoDiag
-permalink: /projects/cocodiag
+permalink: /projects/capstone-cocodiag
 ---
 
 # CocoDiag

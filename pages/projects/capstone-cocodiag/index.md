@@ -8,7 +8,7 @@ permalink: /projects/cocodiag
 
 **CocoDiag** is an AI-powered Android application that diagnoses coconut plant diseases from a single photo and gives farmers actionable treatment guidance. Built with Kotlin, TensorFlow, Flask, and Google Cloud, it focuses on diagnostic reliability, a smooth camera-to-result experience, and farmer-to-farmer knowledge sharing.
 
-<img src="https://placehold.co/860x400?text=CocoDiag+Cover" alt="REPLACE ME: Cover image. Suggested: a composite of three app screens (camera, diagnosis result, forum) on a device mockup with the CocoDiag logo." class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/CocoDiag+Cover.png" alt="Cover image. Suggested: a composite of three app screens (camera, diagnosis result, forum) on a device mockup with the CocoDiag logo." class="img-fluid rounded" />
 
 ---
 
@@ -78,16 +78,15 @@ Indonesia is the world's second-largest coconut producer, yet plant diseases can
 ## Demo
 
 <a href="https://youtu.be/mEucYY-vJIk">
-  <img src="https://placehold.co/860x484?text=Demo+Video" alt="REPLACE ME: Video thumbnail for the CocoDiag demo. Export a frame from the walkthrough video (diagnosis flow) and link it to the YouTube video." class="img-fluid rounded" />
+  <img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/Demo+Video.gif" alt="Video thumbnail for the CocoDiag demo. Export a frame from the walkthrough video (diagnosis flow) and link it to the YouTube video." class="img-fluid rounded" />
 </a>
 
 ### App Screens
 
-<img src="https://placehold.co/200x420?text=Onboarding" alt="REPLACE ME: Onboarding screen, first slide." class="rounded" />
-<img src="https://placehold.co/200x420?text=Camera" alt="REPLACE ME: Camera screen with the capture and gallery buttons." class="rounded" />
-<img src="https://placehold.co/200x420?text=Result" alt="REPLACE ME: Diagnosis result screen showing disease name, confidence, and the info dialog with symptoms and controls." class="rounded" />
-<img src="https://placehold.co/200x420?text=Forum" alt="REPLACE ME: Forum feed with posts, likes, and comment counts." class="rounded" />
-<img src="https://placehold.co/200x420?text=History" alt="REPLACE ME: Diagnosis history list screen." class="rounded" />
+<img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/1-Onboarding.png" alt="Onboarding screen, first slide." class="rounded" />
+<img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/2-Camera.png" alt="Camera screen with the capture and gallery buttons." class="rounded" />
+<img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/3-Result.png" alt="Diagnosis result screen showing disease name, confidence, and the info dialog with symptoms and controls." class="rounded" />
+<img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/4-Historypng" alt="Diagnosis history list screen." class="rounded" />
 
 ---
 
@@ -164,7 +163,7 @@ The final model was evaluated on a held-out test set of 460 images (80/10/10 spl
 | Leaf Rot | 0.96 | 1.00 | 0.98 | 168 |
 | Stem Bleeding | 1.00 | 1.00 | 1.00 | 60 |
 
-<img src="https://placehold.co/860x400?text=Training+Curves+and+Confusion+Matrix" alt="REPLACE ME: Training and validation curves, plus the confusion matrix exported from the final notebook." class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/Training+Curves+and+Confusion+Matrix.png" alt="REPLACE ME: Training and validation curves, plus the confusion matrix exported from the final notebook." class="img-fluid rounded" />
 
 > The experiments used different input sizes and evaluation sets (validation vs. test), so the comparison is directional rather than strictly like-for-like.
 

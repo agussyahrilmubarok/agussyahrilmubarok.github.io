@@ -78,7 +78,7 @@ Indonesia is the world's second-largest coconut producer, yet plant diseases can
 ## Demo
 
 <a href="https://youtu.be/mEucYY-vJIk">
-  <img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/Demo+Video.gif" alt="Video thumbnail for the CocoDiag demo. Export a frame from the walkthrough video (diagnosis flow) and link it to the YouTube video." class="img-fluid rounded" />
+  <img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/Demo+Video.gif" alt="CocoDiag demo: diagnosis flow from camera to result" class="img-fluid rounded d-block mx-auto" />
 </a>
 
 ### App Screens
@@ -86,7 +86,7 @@ Indonesia is the world's second-largest coconut producer, yet plant diseases can
 <img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/1-Onboarding.png" alt="Onboarding screen, first slide." class="rounded" />
 <img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/2-Camera.png" alt="Camera screen with the capture and gallery buttons." class="rounded" />
 <img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/3-Result.png" alt="Diagnosis result screen showing disease name, confidence, and the info dialog with symptoms and controls." class="rounded" />
-<img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/4-Historypng" alt="Diagnosis history list screen." class="rounded" />
+<img src="{{ site.baseurl }}/assets/projects/capstone-cocodiag/4-History.png" alt="Diagnosis history list screen." class="rounded" />
 
 ---
 

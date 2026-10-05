@@ -87,3 +87,16 @@
     - Laravel
     - MySQL
   muted: Completed on January 2022
+
+- name: Backend - Build Project Name
+  image_url: "https://placehold.co/200x200?text=Project"
+  url_path: "/projects/template"
+  description: One or two sentences that state what the system does, who it serves, and the key technical highlight, for example event-driven order processing handling 1,000 requests per second with zero-downtime deployments.
+  tags:
+    - Backend
+    - Golang
+    - REST API
+    - PostgreSQL
+    - Docker
+    - Kubernetes
+  muted: Completed on January 2022

@@ -288,9 +288,9 @@ Table resources {
 
 ## Roadmap
 
-- [ ] Add [planned feature or improvement].
-- [ ] Migrate [component] to [better approach].
-- [ ] Publish a public API reference.
+- Add [planned feature or improvement].
+- Migrate [component] to [better approach].
+- Publish a public API reference.
 
 ---
 

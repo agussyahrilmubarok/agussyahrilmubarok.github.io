@@ -7,7 +7,7 @@ permalink: /projects/
 {% for project in site.data.projects %}
 <div>
     {% if project.image_url and project.image_url != "" %}
-    <img src="{{ project.image_url }}" class="rounded" width="100" height="100">
+    <img src="{{ project.image_url | relative_url }}" alt="{{ project.name }}" class="rounded" width="100" height="100">
     {% endif %}
     <h2>{{ project.name }}</h2>
     <div>
@@ -17,7 +17,7 @@ permalink: /projects/
     </div>
     <p>{{ project.description }}</p>
     {% if project.url_path and project.url_path != "" %}
-        <a href="{{ project.url_path }}" class="pf-project-link">
+        <a href="{{ project.url_path | relative_url }}" class="pf-project-link">
           Read More {% include icons/chevron-right.html %}
         </a>
     {% endif %}

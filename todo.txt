@@ -1,5 +1,27 @@
 - projects: capstone-cocodiag
+    - Add System Architecture Diagram.
+    - Add Firestore Data Model.
+- projects: biniq
+    - Add BinIQ Cover.
+    - Add Android Screen Apps.
+    - Add System Architecture Diagram.
+    - Add Hardware Wiring.
+    - Add Training Curves and Confusion Matrix.
 - projects: demo-backerhub
+    - Analyst Project.
+    - Make pages.
+- projects: demo-geoadmin
+    - Analyst Project.
+    - Make pages.
+- projects: demo-netflux
+    - Analyst Project.
+    - Make pages.
 - projects: demo-observability
+    - Analyst Project.
+    - Make pages.
 - projects: research-burst-login
+    - Analyst Project.
+    - Make pages.
 - projects: research-search-recommendation
+    - Analyst Project.
+    - Make pages.

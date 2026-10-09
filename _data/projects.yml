@@ -29,17 +29,18 @@
     - Google Cloud
   muted: Completed on June 2024
   
-- name: Fullstack - Build BackerHub
+- name: Fullstack - BackerHub Crowdfunding Platform
   image_url: "https://placehold.co/200x200?text=BackerHub"
   url_path: "/projects/demo-backerhub"
-  description: Collaborative backend development platform focused on API management, authentication, and developer productivity tools.
+  description: Full-stack crowdfunding platform that connects campaign creators with donors through Midtrans and Xendit payments, with moderated campaigns, secure token-based sessions, and an admin analytics panel.
   tags:
     - Golang
     - REST API
     - TypeScript
     - Vue
     - PostgreSQL
-  muted: Completed on November 2023
+    - Docker
+  muted: Completed in November 2023
 
 - name: Fullstack - Build Snippetbox
   image_url: "https://placehold.co/200x200?text=Snippetbox"

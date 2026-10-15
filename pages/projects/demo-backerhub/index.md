@@ -8,7 +8,7 @@ permalink: /projects/demo-backerhub
 
 **BackerHub** is a full-stack crowdfunding platform that connects campaign creators with donors through secure, gateway-backed payments. Built with Go, Vue 3, and PostgreSQL, it focuses on payment integrity, secure session management, and a clean, maintainable architecture.
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub+Cover.png" alt="Cover image: BackerHub landing page showing featured campaigns, category filters, and funding progress bars on desktop and mobile" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/BackerHub-Cover.png" alt="Cover image: BackerHub landing page showing featured campaigns, category filters, and funding progress bars on desktop and mobile" class="img-fluid rounded" />
 
 ---
 
@@ -77,25 +77,24 @@ Community fundraising needs more than a donation button. Campaigns must be revie
 
 ## Product Walkthrough
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub-Home.png" alt="" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/BackerHub-Home.png" alt="BackerHub home page listing active crowdfunding campaigns" class="img-fluid rounded" />
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub-Creator-Create.png" alt="" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/BackerHub-Creator-Create.png" alt="Campaign creation form in the creator dashboard" class="img-fluid rounded" />
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub-Creator-Campaign-List.png" alt="" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/BackerHub-Creator-Campaign-List.png" alt="Creator dashboard Campaigns tab listing the user's campaigns with their status" class="img-fluid rounded" />
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub-Creator-Donations.png" alt="" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/BackerHub-Creator-Donations.png" alt="Dashboard Donations tab showing the user's donations with status badges, order references, amounts, search, status filter, and sorting" class="img-fluid rounded" />
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backehub/Admin+Dashboard.png" alt="" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin-Dashboard.png" alt="Admin dashboard with donation trends, top campaigns, and moderation counters" class="img-fluid rounded" />
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin+Dashboard+Campaign-Pending.png" alt="" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin-Dashboard-Campaign-Pending.png" alt="Admin list of campaigns pending moderation" class="img-fluid rounded" />
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin+Dashboard+Campaign+Detail.png" alt="" class="img-fluid rounded" />
-
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin-Dashboard-Campaign-Detail.png" alt="Admin campaign detail view with approve and reject actions" class="img-fluid rounded" />
 ---
 
 ## Architecture
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backehub/System+Architecture+Diagram.png" alt="System architecture diagram: Vue SPA and admin browser calling the Go API, which connects to PostgreSQL, an SMTP server, and the Midtrans and Xendit gateways, with gateways calling back through webhooks" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/System-Architecture-Diagram.png" alt="System architecture diagram: Vue SPA and admin browser calling the Go API, which connects to PostgreSQL, an SMTP server, and the Midtrans and Xendit gateways, with gateways calling back through webhooks" class="img-fluid rounded" />
 
 <pre><code>Browser (Vue 3 SPA) -&gt; Nginx (static) 
 Browser (SPA)       -&gt; Go API (Gin) -&gt; PostgreSQL
@@ -225,7 +224,7 @@ The payload above is abbreviated for illustration.
 | `donations` | The donor's pledge and its lifecycle status |
 | `payment_donations` | One row per gateway payment attempt |
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Database+Design+ERD.png" alt="Entity relationship diagram showing users, campaigns, donations, and payment_donations with their foreign key relationships" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Database-Design-ERD.png" alt="Entity relationship diagram showing users, campaigns, donations, and payment_donations with their foreign key relationships" class="img-fluid rounded" />
 
 > View the full ERD on [dbdiagram.io](https://dbdiagram.io) by pasting the DBML below.
 

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: BackerHub
-permalink: /projects/backerhub
+permalink: /projects/demo-backerhub
 ---
 
 # BackerHub

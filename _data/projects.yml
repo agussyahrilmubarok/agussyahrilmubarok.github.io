@@ -30,7 +30,7 @@
   muted: Completed on June 2024
   
 - name: Fullstack - BackerHub Crowdfunding Platform
-  image_url: "https://placehold.co/200x200?text=BackerHub"
+  image_url: "/assets/projects/demo-backehub/BackerHub.png"
   url_path: "/projects/demo-backerhub"
   description: Full-stack crowdfunding platform that connects campaign creators with donors through Midtrans and Xendit payments, with moderated campaigns, secure token-based sessions, and an admin analytics panel.
   tags:

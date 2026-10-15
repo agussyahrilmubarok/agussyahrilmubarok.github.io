@@ -8,7 +8,7 @@ permalink: /projects/demo-backerhub
 
 **BackerHub** is a full-stack crowdfunding platform that connects campaign creators with donors through secure, gateway-backed payments. Built with Go, Vue 3, and PostgreSQL, it focuses on payment integrity, secure session management, and a clean, maintainable architecture.
 
-<img src="https://placehold.co/860x400?text=BackerHub+Cover" alt="Cover image: BackerHub landing page showing featured campaigns, category filters, and funding progress bars on desktop and mobile" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub+Cover.png" alt="Cover image: BackerHub landing page showing featured campaigns, category filters, and funding progress bars on desktop and mobile" class="img-fluid rounded" />
 
 ---
 
@@ -77,19 +77,25 @@ Community fundraising needs more than a donation button. Campaigns must be revie
 
 ## Product Walkthrough
 
-<img src="https://placehold.co/860x480?text=Demo+Video+Walkthrough" alt="Video placeholder: 90-second walkthrough showing campaign discovery, the donation form, redirect to the payment page, and the donation status updating after payment" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub-Home.png" alt="" class="img-fluid rounded" />
 
-<img src="https://placehold.co/860x480?text=Campaign+Detail+Page" alt="Screenshot placeholder: campaign detail page with image gallery, funding progress, donation form with preset amounts, and comment thread" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub-Creator-Create.png" alt="" class="img-fluid rounded" />
 
-<img src="https://placehold.co/860x480?text=Creator+Dashboard" alt="Screenshot placeholder: creator dashboard listing campaigns by status with edit, media upload, and progress update actions" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub-Creator-Campaign-List.png" alt="" class="img-fluid rounded" />
 
-<img src="https://placehold.co/860x480?text=Admin+Panel" alt="Screenshot placeholder: admin panel dashboard with donation trend chart, top campaigns table, and pending moderation counters" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backehub/BackerHub-Creator-Donations.png" alt="" class="img-fluid rounded" />
+
+<img src="{{ site.baseurl }}/assets/projects/demo-backehub/Admin+Dashboard.png" alt="" class="img-fluid rounded" />
+
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin+Dashboard+Campaign-Pending.png" alt="" class="img-fluid rounded" />
+
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin+Dashboard+Campaign+Detail.png" alt="" class="img-fluid rounded" />
 
 ---
 
 ## Architecture
 
-<img src="https://placehold.co/860x480?text=System+Architecture+Diagram" alt="System architecture diagram: Vue SPA and admin browser calling the Go API, which connects to PostgreSQL, an SMTP server, and the Midtrans and Xendit gateways, with gateways calling back through webhooks" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backehub/System+Architecture+Diagram.png" alt="System architecture diagram: Vue SPA and admin browser calling the Go API, which connects to PostgreSQL, an SMTP server, and the Midtrans and Xendit gateways, with gateways calling back through webhooks" class="img-fluid rounded" />
 
 <pre><code>Browser (Vue 3 SPA) -&gt; Nginx (static) 
 Browser (SPA)       -&gt; Go API (Gin) -&gt; PostgreSQL
@@ -219,7 +225,7 @@ The payload above is abbreviated for illustration.
 | `donations` | The donor's pledge and its lifecycle status |
 | `payment_donations` | One row per gateway payment attempt |
 
-<img src="https://placehold.co/860x500?text=Database+Design+ERD" alt="Entity relationship diagram showing users, campaigns, donations, and payment_donations with their foreign key relationships" class="img-fluid rounded" />
+<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Database+Design+ERD.png" alt="Entity relationship diagram showing users, campaigns, donations, and payment_donations with their foreign key relationships" class="img-fluid rounded" />
 
 > View the full ERD on [dbdiagram.io](https://dbdiagram.io) by pasting the DBML below.
 

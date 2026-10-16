@@ -186,8 +186,8 @@ summary:focus {
   transition: filter 0.3s;
 }
 
-@media (prefers-color-scheme: dark) {
-  .tech-icon {
-    filter: invert(1);
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   .tech-icon {
+//     filter: invert(1);
+//   }
+// }

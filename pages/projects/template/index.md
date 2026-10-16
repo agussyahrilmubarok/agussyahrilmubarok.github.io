@@ -17,31 +17,34 @@ sitemap: false # remove this line when you copy the template for a real project
 
 ## Overview
 
-| | |
-|---|---|
-| **Role** | Backend Engineer |
-| **Type** | REST API Platform / Microservices / CI/CD Pipeline |
-| **Stack** | Go, PostgreSQL, Redis, Kafka, Docker, Kubernetes |
-| **Architecture** | Microservices, event-driven, clean architecture |
-| **Deployment** | AWS EKS, GitHub Actions, Terraform |
-| **Duration** | January 2022 - June 2022 (6 months) |
-| **Team** | 5 members (3 backend, 1 frontend, 1 DevOps) |
-| **Status** | In production |
+|                  |                                                    |
+| ---------------- | -------------------------------------------------- |
+| **Role**         | Backend Engineer                                   |
+| **Type**         | REST API Platform / Microservices / CI/CD Pipeline |
+| **Stack**        | Go, PostgreSQL, Redis, Kafka, Docker, Kubernetes   |
+| **Architecture** | Microservices, event-driven, clean architecture    |
+| **Deployment**   | AWS EKS, GitHub Actions, Terraform                 |
+| **Duration**     | January 2022 - June 2022 (6 months)                |
+| **Team**         | 5 members (3 backend, 1 frontend, 1 DevOps)        |
+| **Status**       | In production                                      |
 
 ---
 
 ## Problem & Goals
 
 ### Problem
+
 Describe the business or technical problem in two to four sentences. Explain what was painful before this project existed, such as slow manual processes, a monolith that could not scale, or deployments that took hours.
 
 ### Goals
+
 - Reduce [metric] from [baseline] to [target].
 - Support [number] concurrent users or [number] requests per second.
 - Achieve [availability target, e.g. 99.9%] uptime.
 - Enable [capability, e.g. zero-downtime deployments].
 
 ### Constraints
+
 - Budget, team size, or deadline limits.
 - Legacy systems that had to be integrated.
 - Compliance or data residency requirements.
@@ -61,11 +64,13 @@ Describe the business or technical problem in two to four sentences. Explain wha
 ## Key Features
 
 ### Core
+
 - **Feature One** - What it does and why it matters to the user.
 - **Feature Two** - What it does and the technical approach behind it.
 - **Feature Three** - What it does and the measurable outcome.
 
 ### Platform
+
 - **Authentication & Authorization** - JWT with refresh tokens and role-based access control.
 - **Background Processing** - Asynchronous jobs through a message queue with retries and dead-letter handling.
 - **Audit Logging** - Immutable records of sensitive operations.
@@ -81,36 +86,36 @@ Describe the business or technical problem in two to four sentences. Explain wha
                        -&gt; Kafka -&gt; Worker -&gt; External API
 </code></pre>
 
-| Component | Responsibility | Technology |
-|---|---|---|
-| **API Gateway** | Routing, rate limiting, authentication | Nginx / Kong |
-| **Core Service** | Business logic and REST endpoints | Go |
-| **Worker** | Asynchronous and scheduled jobs | Go, Kafka |
-| **Database** | Primary persistent storage | PostgreSQL |
-| **Cache** | Hot data and session storage | Redis |
+| Component        | Responsibility                         | Technology   |
+| ---------------- | -------------------------------------- | ------------ |
+| **API Gateway**  | Routing, rate limiting, authentication | Nginx / Kong |
+| **Core Service** | Business logic and REST endpoints      | Go           |
+| **Worker**       | Asynchronous and scheduled jobs        | Go, Kafka    |
+| **Database**     | Primary persistent storage             | PostgreSQL   |
+| **Cache**        | Hot data and session storage           | Redis        |
 
 ### Key Design Decisions
 
-| Decision | Rationale | Trade-off |
-|---|---|---|
-| Event-driven communication between services | Loose coupling and independent scaling | Eventual consistency and harder debugging |
-| PostgreSQL over a NoSQL store | Strong consistency and relational integrity | Vertical scaling limits for writes |
-| Redis cache-aside pattern | Lower read latency on hot endpoints | Cache invalidation complexity |
+| Decision                                    | Rationale                                   | Trade-off                                 |
+| ------------------------------------------- | ------------------------------------------- | ----------------------------------------- |
+| Event-driven communication between services | Loose coupling and independent scaling      | Eventual consistency and harder debugging |
+| PostgreSQL over a NoSQL store               | Strong consistency and relational integrity | Vertical scaling limits for writes        |
+| Redis cache-aside pattern                   | Lower read latency on hot endpoints         | Cache invalidation complexity             |
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| **Language** | Go 1.22 | Backend services |
-| **Framework** | Gin / Echo / Spring Boot | HTTP routing and middleware |
-| **Database** | PostgreSQL 16 | Relational data storage |
-| **Cache** | Redis 7 | Caching and rate limiting |
-| **Messaging** | Apache Kafka | Event streaming |
-| **Container** | Docker, Kubernetes | Packaging and orchestration |
-| **CI/CD** | GitHub Actions | Build, test, and deploy |
-| **IaC** | Terraform | Infrastructure provisioning |
+| Layer          | Technology                | Purpose                       |
+| -------------- | ------------------------- | ----------------------------- |
+| **Language**   | Go 1.22                   | Backend services              |
+| **Framework**  | Gin / Echo / Spring Boot  | HTTP routing and middleware   |
+| **Database**   | PostgreSQL 16             | Relational data storage       |
+| **Cache**      | Redis 7                   | Caching and rate limiting     |
+| **Messaging**  | Apache Kafka              | Event streaming               |
+| **Container**  | Docker, Kubernetes        | Packaging and orchestration   |
+| **CI/CD**      | GitHub Actions            | Build, test, and deploy       |
+| **IaC**        | Terraform                 | Infrastructure provisioning   |
 | **Monitoring** | Prometheus, Grafana, Loki | Metrics, dashboards, and logs |
 
 ---
@@ -119,14 +124,14 @@ Describe the business or technical problem in two to four sentences. Explain wha
 
 The API follows REST conventions with versioned paths (`/api/v1`), consistent error responses, cursor-based pagination, and an OpenAPI 3 specification.
 
-| Method | Endpoint | Description | Auth |
-|---|---|---|---|
-| `POST` | `/api/v1/auth/login` | Authenticate and issue tokens | Public |
-| `GET` | `/api/v1/resources` | List resources with pagination and filters | User |
-| `POST` | `/api/v1/resources` | Create a resource | Admin |
-| `GET` | `/api/v1/resources/:id` | Retrieve a single resource | User |
-| `PATCH` | `/api/v1/resources/:id` | Partially update a resource | Admin |
-| `DELETE` | `/api/v1/resources/:id` | Soft delete a resource | Admin |
+| Method   | Endpoint                | Description                                | Auth   |
+| -------- | ----------------------- | ------------------------------------------ | ------ |
+| `POST`   | `/api/v1/auth/login`    | Authenticate and issue tokens              | Public |
+| `GET`    | `/api/v1/resources`     | List resources with pagination and filters | User   |
+| `POST`   | `/api/v1/resources`     | Create a resource                          | Admin  |
+| `GET`    | `/api/v1/resources/:id` | Retrieve a single resource                 | User   |
+| `PATCH`  | `/api/v1/resources/:id` | Partially update a resource                | Admin  |
+| `DELETE` | `/api/v1/resources/:id` | Soft delete a resource                     | Admin  |
 
 <details>
 <summary>Show example request and response</summary>
@@ -159,10 +164,10 @@ Authorization: Bearer &lt;access_token&gt;
 
 ## Data Model
 
-| Table | Description |
-|---|---|
-| `users` | Accounts, credentials, and roles |
-| `resources` | Core business entity |
+| Table        | Description                            |
+| ------------ | -------------------------------------- |
+| `users`      | Accounts, credentials, and roles       |
+| `resources`  | Core business entity                   |
 | `audit_logs` | Immutable history of sensitive actions |
 
 <img src="https://placehold.co/860x500?text=Database+Design+ERD" alt="Database design ERD" class="img-fluid rounded" />
@@ -209,13 +214,14 @@ Table resources {
 
 ## Infrastructure & CI/CD
 
-| Environment | Purpose | Deployment Trigger |
-|---|---|---|
-| **Development** | Integration and feature testing | Merge to `develop` |
-| **Staging** | Pre-release validation | Release candidate tag |
-| **Production** | Live traffic | Manual approval on tagged release |
+| Environment     | Purpose                         | Deployment Trigger                |
+| --------------- | ------------------------------- | --------------------------------- |
+| **Development** | Integration and feature testing | Merge to `develop`                |
+| **Staging**     | Pre-release validation          | Release candidate tag             |
+| **Production**  | Live traffic                    | Manual approval on tagged release |
 
 ### Pipeline Stages
+
 1. **Lint & Format** - Static analysis and code style checks.
 2. **Unit & Integration Tests** - Run against ephemeral containers.
 3. **Security Scan** - Dependency audit and container image scan.
@@ -226,35 +232,35 @@ Table resources {
 
 ## Observability & Reliability
 
-| Area | Approach |
-|---|---|
-| **Logging** | Structured JSON logs with correlation IDs, aggregated in Loki |
-| **Metrics** | RED metrics (rate, errors, duration) exposed to Prometheus |
-| **Dashboards** | Grafana dashboards for latency, throughput, and saturation |
-| **Alerting** | Alerts on error rate, p95 latency, and queue lag |
+| Area           | Approach                                                            |
+| -------------- | ------------------------------------------------------------------- |
+| **Logging**    | Structured JSON logs with correlation IDs, aggregated in Loki       |
+| **Metrics**    | RED metrics (rate, errors, duration) exposed to Prometheus          |
+| **Dashboards** | Grafana dashboards for latency, throughput, and saturation          |
+| **Alerting**   | Alerts on error rate, p95 latency, and queue lag                    |
 | **Resilience** | Timeouts, retries with backoff, circuit breakers, graceful shutdown |
 
 ---
 
 ## Testing & Quality
 
-| Type | Tooling | Coverage / Scope |
-|---|---|---|
-| **Unit** | Go test / JUnit | 80%+ of business logic |
-| **Integration** | Testcontainers | Repository and messaging layers |
-| **API / Contract** | Postman, Newman | All public endpoints |
-| **Load** | k6 | Critical user journeys |
+| Type               | Tooling         | Coverage / Scope                |
+| ------------------ | --------------- | ------------------------------- |
+| **Unit**           | Go test / JUnit | 80%+ of business logic          |
+| **Integration**    | Testcontainers  | Repository and messaging layers |
+| **API / Contract** | Postman, Newman | All public endpoints            |
+| **Load**           | k6              | Critical user journeys          |
 
 ---
 
 ## Performance & Scalability
 
-| Metric | Before | After |
-|---|---|---|
-| **p95 response time** | 850 ms | 120 ms |
-| **Throughput** | 200 req/s | 1,500 req/s |
-| **Deployment time** | 45 minutes | 6 minutes |
-| **Infrastructure cost** | baseline | -30% |
+| Metric                  | Before     | After       |
+| ----------------------- | ---------- | ----------- |
+| **p95 response time**   | 850 ms     | 120 ms      |
+| **Throughput**          | 200 req/s  | 1,500 req/s |
+| **Deployment time**     | 45 minutes | 6 minutes   |
+| **Infrastructure cost** | baseline   | -30%        |
 
 <!-- Replace the numbers above with real measurements, and state how they were measured (tool, environment, dataset size). -->
 
@@ -262,11 +268,11 @@ Table resources {
 
 ## Challenges & Solutions
 
-| Challenge | Solution | Outcome |
-|---|---|---|
-| Slow queries on a large table | Added composite indexes and rewrote N+1 queries | p95 latency dropped by 85% |
-| Duplicate event processing | Implemented idempotency keys and a deduplication store | Zero duplicate side effects |
-| Risky production releases | Introduced blue-green deployment with automated rollback | No release-related downtime |
+| Challenge                     | Solution                                                 | Outcome                     |
+| ----------------------------- | -------------------------------------------------------- | --------------------------- |
+| Slow queries on a large table | Added composite indexes and rewrote N+1 queries          | p95 latency dropped by 85%  |
+| Duplicate event processing    | Implemented idempotency keys and a deduplication store   | Zero duplicate side effects |
+| Risky production releases     | Introduced blue-green deployment with automated rollback | No release-related downtime |
 
 ---
 
@@ -296,9 +302,9 @@ Table resources {
 
 ## Links
 
-| | |
-|---|---|
-| **Source Code** | [github.com/agussyahrilmubarok/project-name](https://github.com/agussyahrilmubarok) |
-| **Live Demo** | [demo.example.com](https://example.com) |
-| **API Documentation** | [docs.example.com](https://example.com) |
-| **Write-up** | [Medium article](https://medium.com/@agussyahrilmubarok) |
+|                       |                                                                                     |
+| --------------------- | ----------------------------------------------------------------------------------- |
+| **Source Code**       | [github.com/agussyahrilmubarok/project-name](https://github.com/agussyahrilmubarok) |
+| **Live Demo**         | [demo.example.com](https://example.com)                                             |
+| **API Documentation** | [docs.example.com](https://example.com)                                             |
+| **Write-up**          | [Medium article](https://medium.com/@agussyahrilmubarok)                            |

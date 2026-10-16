@@ -42,14 +42,18 @@
     - Docker
   muted: Completed in November 2023
 
-- name: Fullstack - Build Snippetbox
-  image_url: "https://placehold.co/200x200?text=Snippetbox"
-  url_path: ""
-  description: Web application for storing, managing, and sharing reusable code snippets with authentication and categorized collections.
+- name: GeoAdmin - Geographic Data Platform
+  image_url: "https://placehold.co/200x200?text=GeoAdmin"
+  url_path: "/projects/demo-geoadmin"
+  description: Geographic data administration platform with a public map explorer and a permission-controlled dashboard, built on Spring Boot microservices, PostgreSQL, MinIO, and a React TypeScript frontend.
   tags:
-    - Golang
+    - Java
+    - Spring Boot
+    - Microservices
+    - React
+    - TypeScript
     - PostgreSQL
-  muted: Completed on October 2023
+  muted: "Completed in October 2023"
 
 - name: Backend - Add Coupon Feature on School Management
   image_url: "https://placehold.co/200x200?text=Coupon"

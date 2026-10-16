@@ -14,25 +14,27 @@ permalink: /projects/demo-backerhub
 
 ## Overview
 
-| | |
-|---|---|
-| **Role** | Full-Stack Engineer |
-| **Type** | Crowdfunding Platform (REST API, SPA, Admin Panel) |
-| **Stack** | Go, Gin, PostgreSQL, Vue 3, TypeScript, Docker |
+|                  |                                                           |
+| ---------------- | --------------------------------------------------------- |
+| **Role**         | Full-Stack Engineer                                       |
+| **Type**         | Crowdfunding Platform (REST API, SPA, Admin Panel)        |
+| **Stack**        | Go, Gin, PostgreSQL, Vue 3, TypeScript, Docker            |
 | **Architecture** | Clean architecture, layered monolith, gateway abstraction |
-| **Deployment** | Docker Compose (local and development environments) |
-| **Duration** | [Add duration] |
-| **Team** | [Add team size] |
-| **Status** | [Add status] |
+| **Deployment**   | Docker Compose (local and development environments)       |
+| **Duration**     | [Add duration]                                            |
+| **Team**         | [Add team size]                                           |
+| **Status**       | [Add status]                                              |
 
 ---
 
 ## Problem & Goals
 
 ### Problem
+
 Community fundraising needs more than a donation button. Campaigns must be reviewed before they go public, payments arrive asynchronously through third-party gateways that retry and reorder callbacks, and donor money must never be counted twice or lost. Many lightweight implementations treat payment confirmation as a single request/response step, which breaks down as soon as a webhook is delayed, duplicated, or arrives after the payment window has closed.
 
 ### Goals
+
 - Deliver an end-to-end journey for donors and creators: discover, donate, pay, and track.
 - Support two payment gateways (Midtrans and Xendit) behind one abstraction.
 - Keep financial state correct under retries, duplicate callbacks, and concurrent requests.
@@ -40,6 +42,7 @@ Community fundraising needs more than a donation button. Campaigns must be revie
 - Secure the full session lifecycle, including token rotation, device sessions, and revocation.
 
 ### Constraints
+
 - Payment confirmation is asynchronous and gateway-specific, with different signature schemes and status vocabularies.
 - A single deployable backend serves both the public API and the server-rendered admin panel.
 - Core invariants (status transitions, one paid attempt per donation) must hold even if the application layer is bypassed.
@@ -60,6 +63,7 @@ Community fundraising needs more than a donation button. Campaigns must be revie
 ## Key Features
 
 ### Core
+
 - **Campaign Management** - Creators draft campaigns with a thumbnail, a gallery, a goal, and a deadline, then publish progress updates.
 - **Donations & Payments** - Donors pay through Midtrans or Xendit, can donate anonymously, and can leave a message. Each payment attempt is tracked individually.
 - **Moderation Workflow** - Admins approve, reject (with a reason), and feature campaigns before and after publication.
@@ -67,6 +71,7 @@ Community fundraising needs more than a donation button. Campaigns must be revie
 - **Discovery** - Category browsing, featured campaigns, and full-text search tuned for Indonesian.
 
 ### Platform
+
 - **Authentication & Authorization** - JWT access tokens, rotating refresh tokens, email verification, password reset, and role-based access (user and admin).
 - **Session Management** - Users can review active sessions by device and revoke any or all of them.
 - **Admin Analytics** - Dashboard with donation trends, top campaigns, recent donations, and status summaries.
@@ -89,8 +94,7 @@ Community fundraising needs more than a donation button. Campaigns must be revie
 
 <img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin-Dashboard-Campaign-Pending.png" alt="Admin list of campaigns pending moderation" class="img-fluid rounded" />
 
-<img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin-Dashboard-Campaign-Detail.png" alt="Admin campaign detail view with approve and reject actions" class="img-fluid rounded" />
----
+## <img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Admin-Dashboard-Campaign-Detail.png" alt="Admin campaign detail view with approve and reject actions" class="img-fluid rounded" />
 
 ## Architecture
 
@@ -106,18 +110,19 @@ Admin browser       -&gt; Go API (server-rendered admin panel)
 
 The backend follows a layered, hexagonal structure: `delivery` (HTTP handlers, middleware, admin controllers) calls `application` (use cases and services), which depends on `domain` (entities, repository interfaces, errors). `infrastructure` (persistence, payment gateways, mail, configuration, server) implements those interfaces and is wired together manually at startup.
 
-| Component | Responsibility | Technology |
-|---|---|---|
-| **SPA** | Public site, donor and creator dashboards | Vue 3, TypeScript, Vite, Pinia, TanStack Query, Tailwind CSS |
-| **Web Server** | Serves the static SPA build | Nginx |
-| **API** | REST endpoints, authentication, business logic, webhooks | Go, Gin |
-| **Admin Panel** | Moderation, refunds, user and category management, analytics | Server-rendered `html/template`, AdminLTE |
-| **Database** | Persistent storage, integrity constraints, triggers | PostgreSQL |
-| **Payment Gateways** | Hosted checkout and asynchronous payment confirmation | Midtrans Snap, Xendit Invoice |
-| **Mail** | Transactional email | SMTP (Mailpit in development) |
-| **File Storage** | Campaign media and avatars | Local volume |
+| Component            | Responsibility                                               | Technology                                                   |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **SPA**              | Public site, donor and creator dashboards                    | Vue 3, TypeScript, Vite, Pinia, TanStack Query, Tailwind CSS |
+| **Web Server**       | Serves the static SPA build                                  | Nginx                                                        |
+| **API**              | REST endpoints, authentication, business logic, webhooks     | Go, Gin                                                      |
+| **Admin Panel**      | Moderation, refunds, user and category management, analytics | Server-rendered `html/template`, AdminLTE                    |
+| **Database**         | Persistent storage, integrity constraints, triggers          | PostgreSQL                                                   |
+| **Payment Gateways** | Hosted checkout and asynchronous payment confirmation        | Midtrans Snap, Xendit Invoice                                |
+| **Mail**             | Transactional email                                          | SMTP (Mailpit in development)                                |
+| **File Storage**     | Campaign media and avatars                                   | Local volume                                                 |
 
 ### Payment Flow
+
 1. The donor submits a donation. The API validates the campaign and amount, then creates the donation, requests a hosted checkout from the selected gateway, and records the first payment attempt in a single transaction.
 2. The donor is redirected to the gateway-hosted payment page.
 3. The gateway sends a signed webhook. The API verifies the signature before touching any data.
@@ -127,34 +132,34 @@ The backend follows a layered, hexagonal structure: `delivery` (HTTP handlers, m
 
 ### Key Design Decisions
 
-| Decision | Rationale | Trade-off |
-|---|---|---|
-| Layered architecture with manual dependency injection | Explicit wiring, easy to trace, and infrastructure can be swapped without touching business rules | More boilerplate at the composition root |
-| One payment record per gateway attempt | Complete payment history and safe retries | State reconciliation between attempts and donations is more involved |
-| `Gateway` interface with a runtime resolver | New providers can be added without changing use cases | Gateway-specific details must be normalized into a shared status model |
-| Integrity rules enforced in the database (transition triggers, partial unique indexes) | Correctness holds under concurrency and even if the application layer is bypassed | Business logic is split between code and schema, which requires disciplined migrations |
-| Short-lived JWT access tokens with rotating, hashed refresh tokens | Compromised tokens have a small blast radius and sessions can be revoked per device | Extra database access on refresh |
-| Server-rendered admin panel inside the same binary | Fewer moving parts and no separate admin deployment | A second authentication path (cookie sessions) to maintain |
+| Decision                                                                               | Rationale                                                                                         | Trade-off                                                                              |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Layered architecture with manual dependency injection                                  | Explicit wiring, easy to trace, and infrastructure can be swapped without touching business rules | More boilerplate at the composition root                                               |
+| One payment record per gateway attempt                                                 | Complete payment history and safe retries                                                         | State reconciliation between attempts and donations is more involved                   |
+| `Gateway` interface with a runtime resolver                                            | New providers can be added without changing use cases                                             | Gateway-specific details must be normalized into a shared status model                 |
+| Integrity rules enforced in the database (transition triggers, partial unique indexes) | Correctness holds under concurrency and even if the application layer is bypassed                 | Business logic is split between code and schema, which requires disciplined migrations |
+| Short-lived JWT access tokens with rotating, hashed refresh tokens                     | Compromised tokens have a small blast radius and sessions can be revoked per device               | Extra database access on refresh                                                       |
+| Server-rendered admin panel inside the same binary                                     | Fewer moving parts and no separate admin deployment                                               | A second authentication path (cookie sessions) to maintain                             |
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| **Language** | Go | Backend services |
-| **Framework** | Gin | HTTP routing and middleware |
-| **Database** | PostgreSQL 18 | Relational data, full-text search, integrity constraints |
-| **Data Access** | pgx v5 | Connection pooling and parameterized queries |
-| **Frontend** | Vue 3, TypeScript, Vite | Single-page application |
-| **State & Data** | Pinia, TanStack Query | Client state and server-state caching |
-| **Forms** | vee-validate, Zod | Typed form validation |
-| **Styling** | Tailwind CSS | Responsive UI |
-| **Admin UI** | AdminLTE, Bootstrap, Chart.js, DataTables | Moderation and analytics |
-| **Payments** | Midtrans Snap, Xendit Invoice | Hosted checkout |
-| **Container** | Docker, Docker Compose | Packaging and local environments |
-| **Mail (dev)** | Mailpit | SMTP capture for local development |
-| **API Docs** | Swagger / OpenAPI | Generated API reference |
+| Layer            | Technology                                | Purpose                                                  |
+| ---------------- | ----------------------------------------- | -------------------------------------------------------- |
+| **Language**     | Go                                        | Backend services                                         |
+| **Framework**    | Gin                                       | HTTP routing and middleware                              |
+| **Database**     | PostgreSQL 18                             | Relational data, full-text search, integrity constraints |
+| **Data Access**  | pgx v5                                    | Connection pooling and parameterized queries             |
+| **Frontend**     | Vue 3, TypeScript, Vite                   | Single-page application                                  |
+| **State & Data** | Pinia, TanStack Query                     | Client state and server-state caching                    |
+| **Forms**        | vee-validate, Zod                         | Typed form validation                                    |
+| **Styling**      | Tailwind CSS                              | Responsive UI                                            |
+| **Admin UI**     | AdminLTE, Bootstrap, Chart.js, DataTables | Moderation and analytics                                 |
+| **Payments**     | Midtrans Snap, Xendit Invoice             | Hosted checkout                                          |
+| **Container**    | Docker, Docker Compose                    | Packaging and local environments                         |
+| **Mail (dev)**   | Mailpit                                   | SMTP capture for local development                       |
+| **API Docs**     | Swagger / OpenAPI                         | Generated API reference                                  |
 
 ---
 
@@ -162,18 +167,18 @@ The backend follows a layered, hexagonal structure: `delivery` (HTTP handlers, m
 
 The API follows REST conventions with a versioned base path (`/api/v1`), a consistent `message` / `data` / `errors` response envelope, validated payloads, and page-based pagination with an enforced upper limit.
 
-| Method | Endpoint | Description | Auth |
-|---|---|---|---|
-| `POST` | `/api/v1/auth/register` | Register an account and send a verification email | Public |
-| `POST` | `/api/v1/auth/login` | Authenticate and issue access and refresh tokens | Public |
-| `POST` | `/api/v1/auth/refresh` | Rotate the refresh token and issue a new pair | Refresh token |
-| `GET` | `/api/v1/campaigns` | List active campaigns with search, category, and pagination | Public |
-| `GET` | `/api/v1/campaigns/{slug}` | Retrieve a campaign by slug | Public |
-| `POST` | `/api/v1/donations` | Create a donation and obtain a payment URL | User |
-| `GET` | `/api/v1/donations/me/{id}` | Retrieve one of the caller's donations | User |
-| `POST` | `/api/v1/donations/{id}/retry` | Start a new payment attempt | User (owner) |
-| `POST` | `/api/v1/webhooks/midtrans` | Receive Midtrans payment notifications | Signature |
-| `POST` | `/api/v1/webhooks/xendit` | Receive Xendit invoice callbacks | Callback token |
+| Method | Endpoint                       | Description                                                 | Auth           |
+| ------ | ------------------------------ | ----------------------------------------------------------- | -------------- |
+| `POST` | `/api/v1/auth/register`        | Register an account and send a verification email           | Public         |
+| `POST` | `/api/v1/auth/login`           | Authenticate and issue access and refresh tokens            | Public         |
+| `POST` | `/api/v1/auth/refresh`         | Rotate the refresh token and issue a new pair               | Refresh token  |
+| `GET`  | `/api/v1/campaigns`            | List active campaigns with search, category, and pagination | Public         |
+| `GET`  | `/api/v1/campaigns/{slug}`     | Retrieve a campaign by slug                                 | Public         |
+| `POST` | `/api/v1/donations`            | Create a donation and obtain a payment URL                  | User           |
+| `GET`  | `/api/v1/donations/me/{id}`    | Retrieve one of the caller's donations                      | User           |
+| `POST` | `/api/v1/donations/{id}/retry` | Start a new payment attempt                                 | User (owner)   |
+| `POST` | `/api/v1/webhooks/midtrans`    | Receive Midtrans payment notifications                      | Signature      |
+| `POST` | `/api/v1/webhooks/xendit`      | Receive Xendit invoice callbacks                            | Callback token |
 
 <details>
 <summary>Show example request and response</summary>
@@ -212,17 +217,17 @@ The payload above is abbreviated for illustration.
 
 ## Data Model
 
-| Table | Description |
-|---|---|
-| `users` | Accounts, credentials, roles, and hashed verification and reset tokens |
-| `refresh_tokens` | Hashed refresh tokens with expiry, revocation, and device metadata |
-| `categories` | Campaign categories |
-| `campaigns` | Campaign content, goal, progress, status, and moderation fields |
-| `campaign_images` | Ordered gallery images |
-| `campaign_updates` | Progress updates posted by the creator |
-| `comments` | Threaded comments with soft deletion |
-| `donations` | The donor's pledge and its lifecycle status |
-| `payment_donations` | One row per gateway payment attempt |
+| Table               | Description                                                            |
+| ------------------- | ---------------------------------------------------------------------- |
+| `users`             | Accounts, credentials, roles, and hashed verification and reset tokens |
+| `refresh_tokens`    | Hashed refresh tokens with expiry, revocation, and device metadata     |
+| `categories`        | Campaign categories                                                    |
+| `campaigns`         | Campaign content, goal, progress, status, and moderation fields        |
+| `campaign_images`   | Ordered gallery images                                                 |
+| `campaign_updates`  | Progress updates posted by the creator                                 |
+| `comments`          | Threaded comments with soft deletion                                   |
+| `donations`         | The donor's pledge and its lifecycle status                            |
+| `payment_donations` | One row per gateway payment attempt                                    |
 
 <img src="{{ site.baseurl }}/assets/projects/demo-backerhub/Database-Design-ERD.png" alt="Entity relationship diagram showing users, campaigns, donations, and payment_donations with their foreign key relationships" class="img-fluid rounded" />
 
@@ -310,13 +315,14 @@ Table payment_donations {
 
 ## Infrastructure & Environments
 
-| Environment | Purpose | How It Runs |
-|---|---|---|
-| **Local (full stack)** | End-to-end development and demos | Docker Compose: PostgreSQL, Mailpit, backend, frontend |
-| **Backend development** | Fast iteration on the Go API | Compose runs only dependencies; the API runs on the host with hot reload |
-| **Production** | Live traffic | Container images with configuration and secrets supplied through environment overrides |
+| Environment             | Purpose                          | How It Runs                                                                            |
+| ----------------------- | -------------------------------- | -------------------------------------------------------------------------------------- |
+| **Local (full stack)**  | End-to-end development and demos | Docker Compose: PostgreSQL, Mailpit, backend, frontend                                 |
+| **Backend development** | Fast iteration on the Go API     | Compose runs only dependencies; the API runs on the host with hot reload               |
+| **Production**          | Live traffic                     | Container images with configuration and secrets supplied through environment overrides |
 
 ### Delivery Pipeline (Target State)
+
 1. **Lint & Format** - Static analysis for Go and TypeScript.
 2. **Unit & Integration Tests** - Run against ephemeral PostgreSQL containers.
 3. **Security Scan** - Dependency audit and container image scan.
@@ -327,51 +333,51 @@ Table payment_donations {
 
 ## Observability & Reliability
 
-| Area | Approach |
-|---|---|
-| **Logging** | Structured logs with per-request correlation IDs |
-| **Health** | Dedicated health endpoint for orchestration probes |
-| **Shutdown** | Graceful shutdown that drains in-flight requests |
-| **Payments** | Transactional, idempotent webhook handling with database-level safeguards |
-| **Configuration** | YAML configuration with environment variable overrides |
+| Area              | Approach                                                                  |
+| ----------------- | ------------------------------------------------------------------------- |
+| **Logging**       | Structured logs with per-request correlation IDs                          |
+| **Health**        | Dedicated health endpoint for orchestration probes                        |
+| **Shutdown**      | Graceful shutdown that drains in-flight requests                          |
+| **Payments**      | Transactional, idempotent webhook handling with database-level safeguards |
+| **Configuration** | YAML configuration with environment variable overrides                    |
 
 ---
 
 ## Testing & Quality
 
-| Type | Tooling | Scope |
-|---|---|---|
-| **Static Typing** | `vue-tsc` | Strict type checking across the frontend |
-| **Build Verification** | Vite production build | Frontend compiles and bundles cleanly |
-| **Test Doubles** | Mockery | Generated mocks for repositories and services |
-| **API Contract** | Swagger / OpenAPI | Generated reference for all public endpoints |
-| **Unit & Integration** | Go test, Testcontainers | Planned: payment, webhook, and session flows |
+| Type                   | Tooling                 | Scope                                         |
+| ---------------------- | ----------------------- | --------------------------------------------- |
+| **Static Typing**      | `vue-tsc`               | Strict type checking across the frontend      |
+| **Build Verification** | Vite production build   | Frontend compiles and bundles cleanly         |
+| **Test Doubles**       | Mockery                 | Generated mocks for repositories and services |
+| **API Contract**       | Swagger / OpenAPI       | Generated reference for all public endpoints  |
+| **Unit & Integration** | Go test, Testcontainers | Planned: payment, webhook, and session flows  |
 
 ---
 
 ## Performance Considerations
 
-| Area | Approach |
-|---|---|
-| **Search** | PostgreSQL full-text search with an Indonesian configuration and a dedicated GIN index |
-| **Listings** | Composite index on category, status, and creation time for browse queries |
-| **Pagination** | Enforced page-size ceiling and a single query for rows plus total count |
-| **Connections** | Pooled database connections with parameterized queries |
-| **Client Caching** | TanStack Query caching and request de-duplication on the frontend |
-| **Token Refresh** | Single-flight refresh so concurrent requests share one token rotation |
+| Area               | Approach                                                                               |
+| ------------------ | -------------------------------------------------------------------------------------- |
+| **Search**         | PostgreSQL full-text search with an Indonesian configuration and a dedicated GIN index |
+| **Listings**       | Composite index on category, status, and creation time for browse queries              |
+| **Pagination**     | Enforced page-size ceiling and a single query for rows plus total count                |
+| **Connections**    | Pooled database connections with parameterized queries                                 |
+| **Client Caching** | TanStack Query caching and request de-duplication on the frontend                      |
+| **Token Refresh**  | Single-flight refresh so concurrent requests share one token rotation                  |
 
 ---
 
 ## Challenges & Solutions
 
-| Challenge | Solution | Outcome |
-|---|---|---|
-| Gateways retry, duplicate, and reorder callbacks | Idempotency guard, single-transaction updates, a transition trigger, and a partial unique index allowing one paid attempt per donation | Replayed callbacks cannot double-apply a payment |
-| Two gateways with different signatures and statuses | Common `Gateway` interface with normalized notification results | New providers plug in without touching use cases |
-| Retrying a payment without losing history | One payment record per attempt linked to a single donation | Full audit trail and safe retries |
-| Safe session lifecycle across devices | Hashed, rotating refresh tokens with a session management screen | Per-device revocation and bounded token exposure |
-| Keeping uploaded files consistent with database writes | Compensating file cleanup when a database update fails | No orphaned files after failed uploads |
-| Concurrent requests during token expiry | Single-flight refresh interceptor with a request queue | One refresh per expiry window, and network errors do not log users out |
+| Challenge                                              | Solution                                                                                                                               | Outcome                                                                |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Gateways retry, duplicate, and reorder callbacks       | Idempotency guard, single-transaction updates, a transition trigger, and a partial unique index allowing one paid attempt per donation | Replayed callbacks cannot double-apply a payment                       |
+| Two gateways with different signatures and statuses    | Common `Gateway` interface with normalized notification results                                                                        | New providers plug in without touching use cases                       |
+| Retrying a payment without losing history              | One payment record per attempt linked to a single donation                                                                             | Full audit trail and safe retries                                      |
+| Safe session lifecycle across devices                  | Hashed, rotating refresh tokens with a session management screen                                                                       | Per-device revocation and bounded token exposure                       |
+| Keeping uploaded files consistent with database writes | Compensating file cleanup when a database update fails                                                                                 | No orphaned files after failed uploads                                 |
+| Concurrent requests during token expiry                | Single-flight refresh interceptor with a request queue                                                                                 | One refresh per expiry window, and network errors do not log users out |
 
 ---
 
@@ -408,9 +414,9 @@ Table payment_donations {
 
 ## Links
 
-| | |
-|---|---|
-| **Source Code** | [github.com/agussyahrilmubarok/backerhub](https://github.com/agussyahrilmubarok) |
-| **Live Demo** | [demo.example.com](https://example.com) |
-| **API Documentation** | [docs.example.com](https://example.com) |
-| **Write-up** | [Medium article](https://medium.com/@agussyahrilmubarok) |
+|                       |                                                                                  |
+| --------------------- | -------------------------------------------------------------------------------- |
+| **Source Code**       | [github.com/agussyahrilmubarok/backerhub](https://github.com/agussyahrilmubarok) |
+| **Live Demo**         | [demo.example.com](https://example.com)                                          |
+| **API Documentation** | [docs.example.com](https://example.com)                                          |
+| **Write-up**          | [Medium article](https://medium.com/@agussyahrilmubarok)                         |

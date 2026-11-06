@@ -10,7 +10,7 @@
   date: December 2021 - November 2023
   url: https://sevima.com/
   jobdesk:
-    - Developed, tested, and documented RESTful APIs using Java and Golang.
+    - Developed, tested, and documented RESTful APIs using Golang.
     - Managed relational SQL databases for backend services.
     - Automated CI/CD pipelines using Docker, Kubernetes, and AWS.
     - Built event-driven microservices using Apache Kafka.
